@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Website</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900|Cormorant+Garamond:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+    
+    <!-- import the webpage's stylesheet -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- import the webpage's javascript file -->
+    <script src="script.js" defer></script>
+  </head>  
+  <body>
+    <header>
+      <nav>
+        <ul>
+          <a href="index.html" class="header-brand">Tim Riddle</a>
+          <li><a href="index.html">Home</a></li>
+          <li class="dropdown">
+            <!-- Dropdown Button -->
+            <a href="javascript:void(0)" class="dropbtn">Links</a>
+            <div class="dropdown-content">
+                <a href="#">Link 1</a>
+                <a href="#">Link 2</a>
+                <a href="#">Link 3</a>
+            </div>
+          </li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <!---<div class="slider">
+        <div class="slide slide1"><section class="index-banner"><div class="vertical-center"><h2>Website</h2><h1>This is my website</h1></div></section></div>
+        <div class="slide slide2"><section class="index-banner"><div class="vertical-center"><h2>Website</h2><h1>This is my website</h1></div></section></div>
+        <div class="slide slide3"><section class="index-banner"><div class="vertical-center"><h2>Website</h2><h1>This is my website</h1></div></section></div>
+      </div><a class="arrow-left" href="javascript:void(0);"></a><a class="arrow-right" href="javascript:void(0);"></a>
+	    <div class="dots-wrapper"></div>
+      
+      <div class="wrapper">
+        
+        <section class="index-first-text">
+          <h1>Contact</h1>
+        </section>
+        
+        <section class="index-links">
+          <a>
+            <div class="index-boxlink-rectangle">
+              <h3></h3>
+            </div>
+          </a>
+        </section>
+      </div>
+    </main>
+    <div class="wrapper">
+      <footer>
+        <ul class="footer-links-main">
+          <li><a href="#">Home</a></li>
+          <li><a href="#"></a></li>
+          <li><a href="#">Contact</a></li>
+          <li><a href="#"></a></li>
+          <li><a href="#"></a></li>
+        </ul>
+        <ul class="footer-links-cases">
+
+        </ul>
+      </footer>
+    </div>-->
+      
+    <!-- Form -->
+      <div class="contact_container">
+        <form action="mail-test.php" method="post">
+          
+          <!-- Name Field -->
+          
+          <div class="row">
+            <div class="column">
+              <label for="fname">Full Name</label>
+            </div>
+            <div class="column2">
+              <input type="text" id="name" name="name" placeholder="Your full name">
+            </div>
+          </div>
+          
+          <!-- Email Field -->
+          
+          <div class="row">
+            <div class="column">
+              <label for="email">Email Address</label>
+            </div>
+            <div class="column2">
+              <input type="text" id="email" name="emailaddress" placeholder="Your email address">
+            </div>
+          </div>
+          
+          <!-- Contact Number Field -->
+          
+          <div class="row">
+            <div class="column">
+              <label for="contactnumber">Contact Number</label>
+            </div>
+            <div class="column2">
+              <input type="text" id="contactnumber" name="contactnumber" placeholder="A contact number">
+            </div>
+          </div>
+          
+          <!-- Subject Field -->
+          
+          <div class="row">
+            <div class="column">
+              <label for="subject">Subject</label>
+            </div>
+            <div class="column2">
+              <textarea id="body" name="body" placeholder="Write something..." style="height: 200px"></textarea>
+            </div>
+          </div>
+          
+          <br>
+          
+          <!-- Submit Button -->
+          
+          <div class="row">
+            <input type="submit" value="Submit">
+          </div>
+          
+        </form>
+      </div>
+      
+      <div id="footer">
+        &copy; Copyright Tim Riddle, all rights reserved, Tawa College 2019
+      </div>
+    </main>
+  
+  </body>
+</html>
