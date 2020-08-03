@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900|Cormorant+Garamond:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
@@ -190,24 +191,15 @@
       </div><a class="arrow-left" href="javascript:void(0);"></a><a class="arrow-right" href="javascript:void(0);"></a>
 	    <div class="dots-wrapper"></div>
       -->
-      <div class="wrapper">
-        
-        <section class="index-first-text">
-          <h1>This website is about...</h1>
-        </section>
-        
-        <section class="index-links">
-          <a href="photos.html">
-            <div class="index-boxlink-rectangle">
-              <h3>Images</h3>
-            </div>
-          </a>
-        </section>
-      </div>
+      <?php
+        require_once("connect.php"); 
+      ?>
+  
     </main>
     <?php 
     require("footer.php");
     ?>
+
   
   </body>
 </html>

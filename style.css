@@ -318,8 +318,16 @@ header nav button {
 
 @media only screen and (min-width:1000px) {
   .wrapper {
+    position: relative;
+    top: 100px;
     width: 1000px;
     margin: 0 auto;
+  }
+
+  .wrapper h1 {
+    font-family: Roboto;
+    font-weight: bolder;
+    font-size: 50px;
   }
   
   .index-banner {
@@ -362,7 +370,7 @@ header nav button {
 /* FOOTER */
 
 footer {
-  width: calc(100% - 80px);
+  width: calc(1000px);
   padding: 40px 40px;
   margin-top: 20px;
   background-color: #111;
@@ -530,3 +538,38 @@ form {
   position: relative;
   top: -30px;
 }
+
+
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 100px 200px 200px 166.66px 166.66px 166.66px;
+  grid-template-rows: 100px;
+  grid-gap: auto;
+  padding: 1px;
+}
+
+.grid-container > div {
+  padding: 10px 0;
+  font-size: 14px;
+}
+
+.grid-container div {
+  margin: auto 0;
+}
+
+.item1 {
+  float: left;
+}
+/*
+.item1 {
+  grid-column-start: 1;
+  grid-column-end: 3;
+}
+*/
+
+
+.item1 button {
+  border: 0;
+}
+

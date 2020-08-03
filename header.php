@@ -9,7 +9,7 @@
             <li class="nav-item">
               <a class="nav-link" href="index.php">Home</a>
             </li>
-             <!-- Dropdown -->
+             <!-- Dropdown 
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
                 Links
@@ -19,6 +19,9 @@
                 <a class="dropdown-item" href="#">Link 2</a>
                 <a class="dropdown-item" href="#">Link 3</a>
               </div>
+            </li>-->
+            <li class="nav-item">
+              <a class="nav-link" href="music.php">Music</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="contact.html">Contact</a>
