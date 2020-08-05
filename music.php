@@ -149,7 +149,7 @@
 
         <h1>Music Library</h1>
 
-        <img src="" width="150px" height="150px">
+        <img src="images/Music.png" width="150px" height="150px">
 
       <?php        
         $query = ("SELECT m.ID, m.Title, al.Album, GROUP_CONCAT(DISTINCT ar.Artist ORDER BY am.ID DESC separator ', ') AS 'Artist', GROUP_CONCAT(DISTINCT g.Genre separator ', ') AS 'Genre', RIGHT(SEC_TO_TIME(m.Duration), 5) AS 'Duration', m.Size, p.Path, m.Filename
@@ -185,7 +185,7 @@
           <div id="wrap">&nbsp;</div>
           -->
           <audio id="<?php echo $output['Filename']; ?>" src="<?php echo $output['Path']; ?><?php echo $output['Filename']; ?>" preload="auto"></audio>
-          <button onclick="document.getElementById('<?php echo $output['Filename']; ?>').play();"><img src="images/Play Button.png" height=40></button>
+          <button onclick="document.getElementById('<?php echo $output['Filename']; ?>').play();"><img src="images/Play Button.jpg" height=40></button>
           </div>
           <div class="item2">
             <p><?php echo $output['Title']; ?></p>
