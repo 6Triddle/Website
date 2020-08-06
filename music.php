@@ -185,7 +185,7 @@
           <div id="wrap">&nbsp;</div>
           -->
           <audio id="<?php echo $output['Filename']; ?>" src="<?php echo $output['Path']; ?><?php echo $output['Filename']; ?>" preload="auto"></audio>
-          <button onclick="document.getElementById('<?php echo $output['Filename']; ?>').play();"><img src="images/Play Button.jpg" height=40></button>
+          <button onclick="document.getElementById('<?php echo $output['Filename']; ?>').play();"><img src="images/Play.jpg" height=40></button>
           </div>
           <div class="item2">
             <p><?php echo $output['Title']; ?></p>
