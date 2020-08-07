@@ -28,15 +28,14 @@
             </li>
             <li class="nav-item">
               <!-- Button to Open the Modal -->
-              <button style="color: white" type="button" class="btn btn" data-toggle="modal" data-target="#signIn">
-                Log In
-              </button>
+              <a style="cursor: pointer;" class="nav-link"  data-toggle="modal" data-target="#signIn">
+                Log In</a>
             </li>
             <li class="nav-item">
               <!-- Button to Open the Modal -->
-              <button style="color: white" type="button" class="btn btn" data-toggle="modal" data-target="#register">
+              <a style="cursor: pointer;" class="nav-link" data-toggle="modal" data-target="#register">
                 Register
-              </button>
+              </a>
             </li>
             <li class="nav-item">
               <form action="includes/logout.inc.php" method="post">

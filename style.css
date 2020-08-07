@@ -571,5 +571,14 @@ form {
 
 .item1 button {
   border: 0;
+  width: 40px;
+  height: 40px;
 }
+
+.item1 button img {
+  margin: 0 auto;
+  width: 40px;
+  height: 40px;
+}
+
 
