@@ -185,7 +185,7 @@
           <div id="wrap">&nbsp;</div>
           -->
           <audio id="<?php echo $output['Filename']; ?>" src="<?php echo $output['Path']; ?><?php echo $output['Filename']; ?>" preload="auto"></audio>
-          <button onclick="document.getElementById('<?php echo $output['Filename']; ?>').play();"><img src="images/Play.jpg"></button>
+          <button onclick="document.getElementById('<?php echo $output['Filename']; ?>').play();"><img src="images/play.png"></button>
           </div>
           <div class="item2">
             <p><?php echo $output['Title']; ?></p>
@@ -194,7 +194,7 @@
             <p><?php echo $output['Album']; ?></p>
           </div>
           <div class="item4">
-            <a href="#"><?php echo $output['Artist']; ?></a>
+            <p href="#"><?php echo $output['Artist']; ?></p>
           </div>
           <div class="item5">
             <p><?php echo $output['Genre']; ?></p>
