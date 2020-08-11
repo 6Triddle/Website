@@ -172,7 +172,7 @@
               <input id="volumeSlider" class="volume-slider" type="range" min="0" max="1" step="0.01" onchange="adjustVolume()" />
               <img src="images/volume-up.png" width="15px" style="margin-left:2px;" />
             </div>
-            <div id="nextSongTitle" class="song-title"><b>Next Song :</b>Next song title goes here...</div>
+            <div id="nextSongTitle" class="song-title"><b>Next Song: </b>Next song title goes here...</div>
           </div>
         </div>
         <script type="text/javascript" src="player.js"></script>
@@ -212,6 +212,9 @@
           -->
           <audio id="<?php echo $output['Filename']; ?>" src="<?php echo $output['Path']; ?><?php echo $output['Filename']; ?>" preload="auto"></audio>
           <button onclick="document.getElementById('<?php echo $output['Filename']; ?>').play();"><img src="images/image.png" onclick="this.src='images/pause.png'"></button>
+          <script type="text/javascript">
+            songs.push("<?php echo $output['Filename']; ?>");
+          </script>
           </div>
           <div class="item2">
             <p><?php echo $output['Title']; ?></p>

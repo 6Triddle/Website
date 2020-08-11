@@ -1,6 +1,4 @@
-var songs = ["01 Dance Monkey.mp3",
-            "01 Memories.mp3",
-            "01 Savage Love (Laxed - Siren Beat).mp3"];
+var songs = [];
 
 var songTitle = document.getElementById('songTitle');
 var songSlider = document.getElementById('songSlider');
@@ -61,9 +59,8 @@ function playOrPauseSong (img) {
 }
 
 function next(){
-	currentSong++;
-    currentSong = (currentSong > 2) ? songs.length - 3 : currentSong;
-    loadSong();
+	currentSong = currentSong + 1 % songs.length;
+	loadSong();
 }
 
 function previous() {
@@ -89,3 +86,4 @@ function decreasePlaybackRate() {
 	song.playbackRate -= 0.5;
 }
 
+console.log(songs);
