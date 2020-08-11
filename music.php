@@ -211,7 +211,7 @@
           <div id="wrap">&nbsp;</div>
           -->
           <audio id="<?php echo $output['Filename']; ?>" src="<?php echo $output['Path']; ?><?php echo $output['Filename']; ?>" preload="auto"></audio>
-          <img src="images/play.png" width="40px" onclick="playOrPauseSong('<?php echo $output['Filename']; ?>');">
+          <img src="images/play.png" width="40px" onclick="playNewSong(this);">
           <script type="text/javascript">
             songs.push("<?php echo $output['Filename']; ?>");
           </script>

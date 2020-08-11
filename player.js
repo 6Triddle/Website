@@ -58,6 +58,7 @@ function playOrPauseSong (img) {
 	}
 }
 
+
 function next(){
 	currentSong++;
     currentSong = (currentSong > 49) ? songs.length - 50 : currentSong;
