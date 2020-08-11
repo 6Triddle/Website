@@ -59,8 +59,9 @@ function playOrPauseSong (img) {
 }
 
 function next(){
-	currentSong = currentSong + 1 % songs.length;
-	loadSong();
+	currentSong++;
+    currentSong = (currentSong > 49) ? songs.length - 50 : currentSong;
+    loadSong();
 }
 
 function previous() {
@@ -86,4 +87,3 @@ function decreasePlaybackRate() {
 	song.playbackRate -= 0.5;
 }
 
-console.log(songs);
