@@ -15,7 +15,7 @@ var currentSong = 0;
 window.onload = loadSong;
 
 function loadSong () {
-	song.src = "songs/" + songs[currentSong];
+	song.src = "Music/" + songs[currentSong];
 	songTitle.textContent = (currentSong + 1) + ". " + songs[currentSong];
 	nextSongTitle.innerHTML = "<b>Next Song: </b>" + songs[currentSong + 1 % songs.length];
 	song.playbackRate = 1;
