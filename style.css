@@ -590,11 +590,6 @@ form {
 	color: #003ba9;
 	font-family: verdana;
 	font-size: 12px;
-
-	top:50%;
-	left:50%;
-	transform: translateX(-50%) translateY(-50%);
-	position: absolute;
 }
 
 .logo{
