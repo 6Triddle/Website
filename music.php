@@ -185,7 +185,7 @@
           <div id="wrap">&nbsp;</div>
           -->
           <audio id="<?php echo $output['Filename']; ?>" src="<?php echo $output['Path']; ?><?php echo $output['Filename']; ?>" preload="auto"></audio>
-          <button onclick="document.getElementById('<?php echo $output['Filename']; ?>').play();"><img src="images/play.png"></button>
+          <button onclick="document.getElementById('<?php echo $output['Filename']; ?>').play();"><img src="images/image.png" onclick="this.src='images/pause.png'"></button>
           </div>
           <div class="item2">
             <p><?php echo $output['Title']; ?></p>
@@ -213,7 +213,7 @@
         while($output = mysqli_fetch_array($result))
         {
       ?>
-        <h1><?php echo $output['Total Duration']; ?></h1>
+        <p><?php echo $output['Total Duration']; ?></p>
       <?php
         }
       ?>

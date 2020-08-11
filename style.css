@@ -568,11 +568,12 @@ form {
 }
 */
 
-
+.item1 button:focus { outline: none; }
 .item1 button {
-  border: 0;
+  border: none;
   width: 40px;
   height: 40px;
+  background-color: white;
 }
 
 .item1 button img {
