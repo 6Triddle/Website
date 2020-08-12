@@ -151,32 +151,6 @@
 
         <img src="images/Music.png" width="150px" height="150px">
 
-        <div class="audio-player-cont">
-          <div class="logo">
-            <img src="images/Music.png" />
-          </div>
-          <div class="player">
-            <div id="songTitle" class="song-title">Song title goes here</div>
-            <input id="songSlider" class="song-slider" type="range" min="0" step="1" onchange="seekSong()" />
-            <div>
-              <div id="currentTime" class="current-time">00:00</div>
-              <div id="duration" class="duration">00:00</div>
-            </div>
-            <div class="controllers">
-              <img src="images/backward.png" width="30px" onclick="previous();" />
-              <img src="images/rewind.png" width="30px" onclick="decreasePlaybackRate();" />
-              <img src="images/Play.png" width="40px" onclick="playOrPauseSong(this);" />
-              <img src="images/fast-forward.png" width="30px" onclick="increasePlaybackRate();" />
-              <img src="images/forward.png" width="30px" onclick="next();" />
-              <img src="images/volume-down.png" width="15px" style="margin-left:5px;"/>
-              <input id="volumeSlider" class="volume-slider" type="range" min="0" max="1" step="0.01" onchange="adjustVolume()" />
-              <img src="images/volume-up.png" width="15px" style="margin-left:2px;" />
-            </div>
-            <div id="nextSongTitle" class="song-title"><b>Next Song: </b>Next song title goes here...</div>
-          </div>
-        </div>
-        <script type="text/javascript" src="player.js"></script>
-
       <?php        
         $query = ("SELECT m.ID, m.Title, al.Album, GROUP_CONCAT(DISTINCT ar.Artist ORDER BY am.ID DESC separator ', ') AS 'Artist', GROUP_CONCAT(DISTINCT g.Genre separator ', ') AS 'Genre', RIGHT(SEC_TO_TIME(m.Duration), 5) AS 'Duration', m.Size, p.Path, m.Filename
         FROM main as m
@@ -211,10 +185,7 @@
           <div id="wrap">&nbsp;</div>
           -->
           <audio id="<?php echo $output['Filename']; ?>" src="<?php echo $output['Path']; ?><?php echo $output['Filename']; ?>" preload="auto"></audio>
-          <img src="images/play.png" width="40px" onclick="playNewSong(this);">
-          <script type="text/javascript">
-            songs.push("<?php echo $output['Filename']; ?>");
-          </script>
+          <button onclick="document.getElementById('<?php echo $output['Filename']; ?>').play();"><img src="images/play.png"></button>
           </div>
           <div class="item2">
             <p><?php echo $output['Title']; ?></p>
@@ -242,7 +213,7 @@
         while($output = mysqli_fetch_array($result))
         {
       ?>
-        <p><?php echo $output['Total Duration']; ?></p>
+        <h1><?php echo $output['Total Duration']; ?></h1>
       <?php
         }
       ?>
