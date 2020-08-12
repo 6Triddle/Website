@@ -1,5 +1,4 @@
 var songs = [];
-var songPlay = [];
 
 var songTitleList = [];
 var nextSongTitleList = [];
@@ -10,6 +9,7 @@ var currentTime = document.getElementById('currentTime');
 var duration = document.getElementById('duration');
 var volumeSlider = document.getElementById('volumeSlider');
 var nextSongTitle = document.getElementById('nextSongTitle');
+var prevID = 0;
 
 var song = new Audio();
 var currentSong = 0;
@@ -62,18 +62,24 @@ function playOrPauseSong (img) {
 	}
 }
 
-function playSong (img) {
-	song.src = "Music/" + songs[songPlay];
-	songTitle.textContent = (songPlay + 1) + ". " + songTitleList[songPlay];
-	nextSongTitle.innerHTML = "<b>Next Song: </b>" + songTitleList[songPlay + 1 % songs.length];
-	song.playbackRate = 1;
-	song.volume = volumeSlider.value;
-	if(song.paused){
+function playSong (img, songID) {
+	if (songID == prevID) { 
+		if(song.paused){
 		song.play();
 		img.src = "images/pause.png";
-	}else{
-		song.pause();
-		img.src = "images/play.png";
+		}else{
+			song.pause();
+			img.src = "images/play.png";
+		}
+	}
+	else {
+		prevID = songID
+		songID -= 1
+		song.src = "Music/" + songs[songID];
+		songTitle.textContent = (songID + 1) + ". " + songTitleList[songID];
+		nextSongTitle.innerHTML = "<b>Next Song: </b>" + songTitleList[songID + 1 % songs.length];
+		song.playbackRate = 1;
+		song.volume = volumeSlider.value;
 	}
 }
 
