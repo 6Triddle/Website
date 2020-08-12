@@ -165,7 +165,7 @@
             <div class="controllers">
               <img src="images/backward.png" width="30px" onclick="previous();" />
               <img src="images/rewind.png" width="30px" onclick="decreasePlaybackRate();" />
-              <img src="images/pause.png" width="40px" onclick="playOrPauseSong(this);" />
+              <img src="images/Play.png" width="40px" onclick="playOrPauseSong(this);" />
               <img src="images/fast-forward.png" width="30px" onclick="increasePlaybackRate();" />
               <img src="images/forward.png" width="30px" onclick="next();" />
               <img src="images/volume-down.png" width="15px" style="margin-left:5px;"/>
