@@ -588,9 +588,9 @@ form {
   position: fixed;
   left: 0;
   bottom: 0;
-  background-color: #111111;
+  background-color: #282828;
   z-index: 5;
-	color: #fff;
+	color: #b3b3b3;
 	font-family: verdana;
 	font-size: 12px;
 }
@@ -605,7 +605,7 @@ form {
 
 .player{
   margin: auto;
-  padding-top: 25px;
+  padding-top: 5px;
   width: 1000px;
   position: relative;
 }
@@ -632,8 +632,9 @@ form {
 }
 
 .controllers{
-  width: 100%;
-  padding-left: 25%;
+  width: 1000px;
+  margin: auto;
+  padding-top: 25px;
 }
 
 .controllers *{

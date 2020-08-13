@@ -10,6 +10,7 @@ var duration = document.getElementById('duration');
 var volumeSlider = document.getElementById('volumeSlider');
 var nextSongTitle = document.getElementById('nextSongTitle');
 var prevID = 0;
+var mainImg = 0;
 var prevImg = 0;
 
 var song = new Audio();
@@ -53,14 +54,14 @@ function showDuration () {
 
 
 function playOrPauseSong (img) {
-	prevImg = img
+	mainImg = img
 	song.playbackRate = 1;
 	if(song.paused){
 		song.play();
-		img.src = "images/pause.png";
+		img.src = "images/mainPause.png";
 	}else{
 		song.pause();
-		img.src = "images/play.png";
+		img.src = "images/mainPlay.png";
 		
 	}
 }
@@ -69,13 +70,20 @@ function playSong (img, songID) {
 	if (songID == prevID) { 
 		if(song.paused){
 			song.play();
+			prevImg = img
+			mainImg.src = "images/MainPause.png";
 			img.src = "images/pause.png";
 		}else{
 			song.pause();
+			mainImg.src = "images/MainPlay.png";
 			img.src = "images/play.png";
+			
 		}
 	}
 	else {
+		if(song.paused) {
+			prevImg.src = "images/play.png";
+		}
 		prevID = songID
 		songID -= 1
 		song.src = "Music/" + songs[songID];
@@ -84,20 +92,22 @@ function playSong (img, songID) {
 		song.playbackRate = 1;
 		song.volume = volumeSlider.value;
 		song.play();
-		img.src = "images/pause.png";
+		mainImg.src = "images/mainPause.png";
 	}
 }
 
 
 function next(){
 	currentSong++;
-    currentSong = (currentSong > 49) ? songs.length - 50 : currentSong;
+	currentSong = (currentSong > 49) ? songs.length - 50 : currentSong;
+	mainImg.src = "images/mainPlay.png";
     loadSong();
 }
 
 function previous() {
 	currentSong--;
 	currentSong = (currentSong < 0) ? songs.length - 1 : currentSong;
+	mainImg.src = "images/mainPlay.png";
 	loadSong();
 }
 

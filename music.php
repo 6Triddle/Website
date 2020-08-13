@@ -156,12 +156,12 @@
             <img src="images/Music.png" />
           </div>
           <div class="controllers">
-            <img src="images/backward.png" width="30px" onclick="previous();" />
+            <img src="images/backward.png" width="30px" onclick="previous();" style="margin-left:350px;" />
             <img src="images/rewind.png" width="30px" onclick="decreasePlaybackRate();" />
-            <img src="images/Play.png" width="40px" onclick="playOrPauseSong(this);" />
+            <img src="images/mainPlay.png" width="40px" onclick="playOrPauseSong(this);" />
             <img src="images/fast-forward.png" width="30px" onclick="increasePlaybackRate();" />
             <img src="images/forward.png" width="30px" onclick="next();" />
-            <img src="images/volume-down.png" width="15px" style="margin-left:5px;"/>
+            <img src="images/volume-down.png" width="15px" style="margin-left:315px;"/>
             <input id="volumeSlider" class="volume-slider" type="range" min="0" max="1" step="0.01" onchange="adjustVolume()" />
             <img src="images/volume-up.png" width="15px" style="margin-left:2px;" />
           </div>
