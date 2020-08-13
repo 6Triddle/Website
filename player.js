@@ -2,6 +2,7 @@ var songs = [];
 
 var songTitleList = [];
 var nextSongTitleList = [];
+var songIDList = [];
 
 var songTitle = document.getElementById('songTitle');
 var songSlider = document.getElementById('songSlider');
@@ -9,6 +10,7 @@ var currentTime = document.getElementById('currentTime');
 var duration = document.getElementById('duration');
 var volumeSlider = document.getElementById('volumeSlider');
 var nextSongTitle = document.getElementById('nextSongTitle');
+var mainPlayOrPause = document.getElementById('mainPlayOrPause');
 var prevID = 0;
 var mainImg = 0;
 var prevImg = 0;
@@ -24,7 +26,7 @@ function loadSong () {
 	nextSongTitle.innerHTML = "<b>Next Song: </b>" + songTitleList[currentSong + 1 % songs.length];
 	song.playbackRate = 1;
 	song.volume = volumeSlider.value;
-	setTimeout(showDuration, 1200);
+	setTimeout(showDuration, 1000);
 }
 
 setInterval(updateSongSlider, 1000);
@@ -52,47 +54,46 @@ function showDuration () {
 	duration.textContent = convertTime(d);
 }
 
-
-function playOrPauseSong (img) {
-	mainImg = img
+function playOrPauseSong () {
 	song.playbackRate = 1;
 	if(song.paused){
 		song.play();
-		img.src = "images/mainPause.png";
+		mainPlayOrPause.src = "images/mainPause.png";
+		prevImg.src = "images/pause.png";
 	}else{
 		song.pause();
-		img.src = "images/mainPlay.png";
+		mainPlayOrPause.src = "images/mainPlay.png";
+		prevImg.src = "images/play.png";
 		
 	}
 }
 
-function playSong (img, songID) {
+function playSong (img, songID) { 
 	if (songID == prevID) { 
 		if(song.paused){
 			song.play();
-			prevImg = img
-			mainImg.src = "images/MainPause.png";
+			mainPlayOrPause.src = "images/MainPause.png";
 			img.src = "images/pause.png";
 		}else{
 			song.pause();
-			mainImg.src = "images/MainPlay.png";
+			mainPlayOrPause.src = "images/MainPlay.png";
 			img.src = "images/play.png";
 			
 		}
 	}
 	else {
-		if(song.paused) {
-			prevImg.src = "images/play.png";
-		}
-		prevID = songID
-		songID -= 1
+		prevImg.src = "images/play.png";
+		prevImg = img;
+		img.src = "images/pause.png";
+		mainPlayOrPause.src = "images/mainPause.png";
+		prevID = songID;
+		songID -= 1;
 		song.src = "Music/" + songs[songID];
 		songTitle.textContent = (songID + 1) + ". " + songTitleList[songID];
 		nextSongTitle.innerHTML = "<b>Next Song: </b>" + songTitleList[songID + 1 % songs.length];
 		song.playbackRate = 1;
 		song.volume = volumeSlider.value;
 		song.play();
-		mainImg.src = "images/mainPause.png";
 	}
 }
 
@@ -100,15 +101,19 @@ function playSong (img, songID) {
 function next(){
 	currentSong++;
 	currentSong = (currentSong > 49) ? songs.length - 50 : currentSong;
-	mainImg.src = "images/mainPlay.png";
-    loadSong();
+	mainPlayOrPause.src = "images/mainPause.png";
+	prevImg.src = "images/pause.png";
+	loadSong();
+	song.play();
 }
 
 function previous() {
 	currentSong--;
 	currentSong = (currentSong < 0) ? songs.length - 1 : currentSong;
-	mainImg.src = "images/mainPlay.png";
+	mainPlayOrPause.src = "images/mainPause.png";
+	prevImg.src = "images/pause.png";
 	loadSong();
+	song.play();
 }
 
 function seekSong() {

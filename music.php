@@ -152,13 +152,10 @@
         <img src="images/Music.png" width="150px" height="150px">
 
         <div class="audio-player-cont">
-          <div class="logo">
-            <img src="images/Music.png" />
-          </div>
           <div class="controllers">
             <img src="images/backward.png" width="30px" onclick="previous();" style="margin-left:350px;" />
             <img src="images/rewind.png" width="30px" onclick="decreasePlaybackRate();" />
-            <img src="images/mainPlay.png" width="40px" onclick="playOrPauseSong(this);" />
+            <img id="mainPlayOrPause" src="images/mainPlay.png" width="40px" onclick="playOrPauseSong();" />
             <img src="images/fast-forward.png" width="30px" onclick="increasePlaybackRate();" />
             <img src="images/forward.png" width="30px" onclick="next();" />
             <img src="images/volume-down.png" width="15px" style="margin-left:315px;"/>
@@ -212,6 +209,7 @@
           <audio id="<?php echo $output['Filename']; ?>" src="<?php echo $output['Path']; ?><?php echo $output['Filename']; ?>" preload="auto"></audio>
           <img id="songID" src="images/play.png" width="40px" onclick="playSong(this, songID = <?php echo $output['ID']; ?>);">
           <script type="text/javascript">
+            songIDList.push(songID);
             songs.push("<?php echo $output['Filename']; ?>");
             songTitleList.push("<?php echo $output['Title']; ?>");
           </script>
