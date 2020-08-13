@@ -155,23 +155,23 @@
           <div class="logo">
             <img src="images/Music.png" />
           </div>
+          <div class="controllers">
+            <img src="images/backward.png" width="30px" onclick="previous();" />
+            <img src="images/rewind.png" width="30px" onclick="decreasePlaybackRate();" />
+            <img src="images/Play.png" width="40px" onclick="playOrPauseSong(this);" />
+            <img src="images/fast-forward.png" width="30px" onclick="increasePlaybackRate();" />
+            <img src="images/forward.png" width="30px" onclick="next();" />
+            <img src="images/volume-down.png" width="15px" style="margin-left:5px;"/>
+            <input id="volumeSlider" class="volume-slider" type="range" min="0" max="1" step="0.01" onchange="adjustVolume()" />
+            <img src="images/volume-up.png" width="15px" style="margin-left:2px;" />
+          </div>
           <div class="player">
             <div id="songTitle" class="song-title">Song title goes here</div>
             <input id="songSlider" class="song-slider" type="range" min="0" step="1" onchange="seekSong()" />
             <div>
               <div id="currentTime" class="current-time">00:00</div>
-              <div id="duration" class="duration">00:00</div>
-            </div>
-            <div class="controllers">
-              <img src="images/backward.png" width="30px" onclick="previous();" />
-              <img src="images/rewind.png" width="30px" onclick="decreasePlaybackRate();" />
-              <img src="images/Play.png" width="40px" onclick="playOrPauseSong(this);" />
-              <img src="images/fast-forward.png" width="30px" onclick="increasePlaybackRate();" />
-              <img src="images/forward.png" width="30px" onclick="next();" />
-              <img src="images/volume-down.png" width="15px" style="margin-left:5px;"/>
-              <input id="volumeSlider" class="volume-slider" type="range" min="0" max="1" step="0.01" onchange="adjustVolume()" />
-              <img src="images/volume-up.png" width="15px" style="margin-left:2px;" />
-            </div>
+                <div id="duration" class="duration">00:00</div>
+              </div>
             <div id="nextSongTitle" class="song-title"><b>Next Song: </b>Next song title goes here...</div>
           </div>
         </div>
@@ -194,7 +194,6 @@
         while($output = mysqli_fetch_array($result))
         {
         ?>
-        
         
         <section class="grid-container">
           <div class="item1">
@@ -255,6 +254,5 @@
     require("footer.php");
     ?>
 
-  
   </body>
 </html>
