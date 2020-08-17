@@ -248,9 +248,11 @@
       </div>
   
     </main>
-    <?php 
-    require("footer.php");
-    ?>
+    <div class="wrapper">
+      <footer class="music">
+        <?php 
+        require("footer.php");
+        ?>
 
   </body>
 </html>

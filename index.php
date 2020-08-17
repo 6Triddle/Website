@@ -196,9 +196,11 @@
       ?>
   
     </main>
-    <?php 
-    require("footer.php");
-    ?>
+    <div class="wrapper">
+      <footer>
+        <?php 
+        require("footer.php");
+        ?>
 
   
   </body>
