@@ -194,6 +194,31 @@
       <?php
         require_once("connect.php"); 
       ?>
+      <div class="wrapper-main">
+        <section class="grid-container-main">
+
+        <?php        
+          $query = ("SELECT als.Image
+          FROM main as m
+          LEFT JOIN album_showcase as als on m.FK_Image = als.Image_PK
+          WHERE als.Image != 'NULL'");
+
+          $result = mysqli_query($con,$query);
+              
+          while($output = mysqli_fetch_array($result))
+          {
+        ?>
+
+          <div class="album">
+            <img src="<?php echo $output['Image']; ?>"/>
+          </div>
+
+        <?php 
+          }
+        ?>
+        </section>
+      </div>
+
   
     </main>
     <div class="wrapper">

@@ -324,6 +324,13 @@ header nav button {
     margin: 0 auto;
   }
 
+  .wrapper-main {
+    position: relative;
+    top: 100px;
+    width: 1000px;
+    margin: 0 auto;
+  }
+
   .wrapper h1 {
     font-family: Roboto;
     font-weight: bolder;
@@ -666,3 +673,26 @@ form {
 .music {
   padding-bottom: 240px;
 }
+
+.grid-container-main {
+  display: grid;
+  grid-template-columns: 100px 100px 100px;
+  grid-template-rows: 100px;
+  grid-gap: auto;
+  padding: 1px;
+}
+
+.grid-container-main > div {
+  padding: 10px 0;
+  font-size: 14px;
+}
+
+.grid-container-main div {
+  margin: auto 0;
+}
+
+.grid-container-main .album img {
+  width: 100px;
+  height: 100px;
+}
+
