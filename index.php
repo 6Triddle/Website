@@ -153,24 +153,24 @@
         <!-- The slideshow -->
         <div class="carousel-inner">
           <div class="carousel-item active">
-            <img src="https://cdn.glitch.com/b605d689-d5fa-4070-b2f8-e6f277d6eeb5%2Fturntable-1109588.jpg?v=1590540745660" alt="Los Angeles" width="1100" height="500">
+            <img class="first" src="https://cdn.glitch.com/b605d689-d5fa-4070-b2f8-e6f277d6eeb5%2Fturntable-1109588.jpg?v=1590540745660" alt="Los Angeles" width="1100" height="500">
             <div class="carousel-caption">
-              <h1>Website</h1>
-              <p>This is a website</p>
+              <h1></h1>
+              <p></p>
             </div>
           </div>
           <div class="carousel-item">
             <img src="https://cdn.glitch.com/b605d689-d5fa-4070-b2f8-e6f277d6eeb5%2Faudience-1850119.jpg?v=1590452069810" alt="Chicago" width="1100" height="500">
             <div class="carousel-caption">
-              <h1>Website</h1>
-              <p>This is a website</p>
+              <h1></h1>
+              <p></p>
             </div>
           </div>
           <div class="carousel-item">
             <img src="https://cdn.glitch.com/b605d689-d5fa-4070-b2f8-e6f277d6eeb5%2Faudience-1835431.jpg?v=1590542217107" alt="New York" width="1100" height="500">
             <div class="carousel-caption">
-              <h1>Website</h1>
-              <p>This is a website</p>
+              <h1></h1>
+              <p></p>
             </div>
           </div>
         </div>
