@@ -23,15 +23,15 @@
       </li>
       <li>
         <!-- Button to Open the Modal -->
-        <a style="cursor: pointer;" data-toggle="modal" data-target="#signIn">
-          Log In
-        </a>
+        <button class="login-button" style="cursor: pointer;" data-toggle="modal" data-target="#signIn">
+          LOG IN
+        </button>
       </li>
       <li>
         <!-- Button to Open the Modal -->
-        <a style="cursor: pointer;" data-toggle="modal" data-target="#register">
-          Register
-        </a>
+        <button class="register-button" style="cursor: pointer;" data-toggle="modal" data-target="#register">
+          SIGN UP
+        </button>
       </li>
       <!--
       <li>

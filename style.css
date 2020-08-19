@@ -101,6 +101,46 @@ input, select {
     vertical-align:middle;
 }
 
+/*FONT*/
+
+@font-face {
+	font-family: 'proxima_nova_rgregular';
+	src: url('https://litmus.com/fonts/Emails/proximanova-regular-webfont.eot');
+	src: url('https://litmus.com/fonts/Emails/proximanova-regular-webfont.eot?#iefix') format('embedded-opentype'),
+		 url('https://litmus.com/fonts/Emails/proximanova-regular-webfont.woff') format('woff'),
+		 url('https://litmus.com/fonts/Emails/proximanova-regular-webfont.ttf') format('truetype'),
+		 url('https://litmus.com/fonts/Emails/proximanova-regul.+ar-webfont.svg#proxima_nova_rgregular') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'proxima_nova_rgbold';
+	src: url('https://litmus.com/fonts/Emails/proximanova-bold-webfont.eot');
+	src: url('https://litmus.com/fonts/Emails/proximanova-bold-webfont.eot?#iefix') format('embedded-opentype'),
+		 url('https://litmus.com/fonts/Emails/proximanova-bold-webfont.woff') format('woff'),
+		 url('https://litmus.com/fonts/Emails/proximanova-bold-webfont.ttf') format('truetype'),
+		 url('https://litmus.com/fonts/Emails/proximanova-bold-webfont.svg#proxima_nova_rgbold') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'adelle_rgregular';
+	src: url('https://litmus.com/fonts/Emails/adelle_reg-webfont.eot');
+	src: url('https://litmus.com/fonts/Emails/adelle_reg-webfont.eot?#iefix') format('embedded-opentype'),
+		 url('https://litmus.com/fonts/Emails/adelle_reg-webfont.woff') format('woff'),
+		 url('https://litmus.com/fonts/Emails/adelle_reg-webfont.ttf') format('truetype'),
+		 url('https://litmus.com/fonts/Emails/adelle_reg-webfont.svg#adelle_rgregular') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+body{
+	font-family: 'proxima_nova_rgregular', Helvetica, Arial, sans-serif;
+}
+h1{
+   font-family: 'proxima_nova_rgbold', Helvetica, Arial, sans-serif;
+}
+
 
 /*MY CODE*/
 
@@ -128,13 +168,13 @@ header .navbar {
 header .navbar ul{
   display: block;
   width: fit-content;
-  position:relative;
+  position: relative;
   z-index: 2;
 }
 
 header .navbar ul li {
+  position: relative;
   display: inline-block;
-  float: left;
   list-style: none;
   padding: 20px;
 }
@@ -147,10 +187,6 @@ header .navbar ul li a {
   text-decoration: none;
 }
 
-header nav button {
-  position: relative;
-  top: 1vh;
-}
 
 @media only screen and (min-width:1000px) {
 
@@ -481,8 +517,6 @@ form {
   top: -30px;
 }
 
-
-
 .grid-container {
   display: grid;
   grid-template-columns: 100px 200px 200px 166.66px 166.66px 166.66px;
@@ -617,4 +651,44 @@ form {
 
 .grid-container-main .album img:last-of-type {
   right: 0;
+}
+
+.register-button {
+  position: relative;
+  top: 0px;
+  right: 0px;
+  bottom: auto;
+  margin-left: 5px;
+  padding: 12px 35px;
+  border-radius: 20px;
+  background-color: #222;
+  color: #fff;
+  font-weight: 700;
+  letter-spacing: 1.76px;
+  line-height: 18px;
+  white-space: normal;
+  border: none;
+  font-size: 13px;
+}
+
+.register-button:focus { outline: none; }
+
+.login-button:focus { outline: none; }
+
+.login-button {
+  position: relative;
+  left: auto;
+  top: 6%;
+  right: 2%;
+  bottom: auto;
+  padding: 12px 35px;
+  border-radius: 20px;
+  background-color: #fff;
+  color: #000;
+  font-weight: 700;
+  letter-spacing: 1.76px;
+  line-height: 18px;
+  white-space: normal;
+  border: none;
+  font-size: 13px;
 }
