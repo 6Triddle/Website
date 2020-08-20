@@ -156,8 +156,9 @@ main {
 
 header {
   display: block;
-  background-color: #000;
+  background-color: rgba(0, 0, 0, 0.6);
   z-index: 2;
+  
 }
 
 header .navbar {
@@ -195,14 +196,6 @@ header .navbar ul li a {
 
 /* INDEX */
 
-.index-banner {
-  width: 100%;
-  height: 100vh;
-  background-repeat: no-repeat;
-  background-position: top;
-  background-size: cover;
-  display: table;
-}
 
 .vertical-center {
   display: table-cell;
@@ -278,7 +271,7 @@ header .navbar ul li a {
 
   .wrapper-main {
     position: relative;
-    top: 100px;
+    top: 50vh;
     width: 1000px;
     margin: 0 auto;
   }
@@ -332,7 +325,7 @@ footer {
   width: 1000px;
   padding: 40px 40px;
   margin-top: 20px;
-  position: static;
+  position: relative;
   bottom: 0;
   background-color: #111;
   overflow: hidden;
@@ -390,7 +383,9 @@ footer ul li a{
 
 /* Make the image fully responsive */
 .carousel {
-  position: relative;
+  position: absolute;
+  top: 0;
+  z-index: -1;
 }
 
 .carousel-inner .first {
@@ -399,7 +394,7 @@ footer ul li a{
 
 .carousel-inner img {
   width: 100%;
-  height: 35vh;
+  height: 45vh;
   object-fit: cover;
   object-position: 50% 50%;
 }
@@ -436,6 +431,7 @@ footer ul li a{
   width: 15px;
   height: 15px;
   border-radius: 100%;
+  z-index: 100;
 }
 
 @media only screen and (min-width:1000px) {
@@ -443,7 +439,7 @@ footer ul li a{
   }
   
   .carousel-inner img {
-    height: 40vh;
+    height: 50vh;
   }
 }
 
@@ -691,4 +687,20 @@ form {
   white-space: normal;
   border: none;
   font-size: 13px;
+}
+
+.signup-error {
+  color:red;
+  position: relative;
+  top: -10px;
+  left: -10px;
+}
+
+.signup-success {
+  color: green;
+}
+
+input:required:focus {
+  border: 1px solid black;
+  outline: none;
 }

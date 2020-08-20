@@ -8,12 +8,12 @@ if (isset($_POST['signup-submit'])) {
   $password = $_POST['pwd'];
   $passwordRepeat = $_POST['pwd-repeat'];
   
-  if (empty($username) || (empty($email) || (empty($password) || (empty($passwordRepeat)) {
-          header("Location: ../index.php?error=emptyfields&uid=".$username."&mail=".$email);
-          exit();
+  if (empty($username) || empty($email) || empty($password) || empty($passwordRepeat)) {
+        header("Location: ../index.php?error=emptyfields&uid=".$username."&mail=".$email);
+        exit();
   }
   else if (!filter_var($email, FILTER_VALIDATE_EMAIL) && !preg_match("/^[a-zA-Z0-9]*$/", $username)) {
-          header("Location: ../index.php?error=invalidmail&uid");
+          header("Location: ../index.php?error=invalidmailuid");
           exit();
   }
   else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
@@ -25,13 +25,13 @@ if (isset($_POST['signup-submit'])) {
           exit();   
   }
   else if ($password !== $passwordRepeat) {
-          header("Location: ../index.php?error=passwordcheckuid=".$username."&mail=".$email);
+          header("Location: ../index.php?error=passwordcheck&uid=".$username."&mail=".$email);
           exit();
   }
   else {
           
-            $sql = "SELECT username FROM Login WHERE username=?";
-            $stmt = mysqli_stmt_init($conn);
+            $sql = "SELECT username FROM users WHERE username=?";
+            $stmt = mysqli_stmt_init($con);
             if (!mysqli_stmt_prepare($stmt, $sql)) {
                     header("Location: ../index.php?error=sqlerror");
                     exit();
@@ -47,8 +47,8 @@ if (isset($_POST['signup-submit'])) {
                     }
                     else {
                     
-                            $sql = "INSERT INTO Login (username, emailaddress, password) VALUES (?, ?, ?)";
-                            $stmt = mysqli_stmt_init($conn);
+                            $sql = "INSERT INTO users (username, emailaddress, password) VALUES (?, ?, ?)";
+                            $stmt = mysqli_stmt_init($con);
                             if (!mysqli_stmt_prepare($stmt, $sql)) {
                                     header("Location: ../index.php?error=sqlerror");
                                     exit();
@@ -67,7 +67,7 @@ if (isset($_POST['signup-submit'])) {
           
   }
   mysqli_stmt_close($stmt);
-  mysqli_close($conn);
+  mysqli_close($con);
 
 }
 else {

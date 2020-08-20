@@ -24,131 +24,9 @@
     require("header.php");
     ?>
     <main>
-      <!-- The Modal -->
-      <div class="modal fade" id="signIn">
-        <div class="modal-dialog">
-          <div class="modal-content">
-
-
-
-     
-
-            <!-- Modal body -->
-            <div class="modal-body">
-              <h4 class="modal-title">Log In</h4>
-              <button type="button" class="close" data-dismiss="modal">&times;</button>
-              <form action="" method="post">
-
-                <!-- Email Field -->
-
-                <div class="row">
-                    <input type="text" id="email" name="emailaddress" placeholder="Email address">
-                </div>
-                
-                <br>
-
-                <!-- Password Field -->
-
-                <div class="row">
-                    <input type="password" id="password" name="passcode" placeholder="Password">
-                </div>
-                
-                <br>                
-                
-                <div class="row">
-                  <input type="checkbox" id="defaultCheck" name="example2">
-                  <label for="defaultCheck">Keep me signed in</label>     
-                </div>
-              </div>  
-              
-
-              <!-- Submit Button -->
-                
-              <div class="modal-footer">
-                <!-- Button to Open the Modal -->
-                <p>Not a member?</p><button type="button" style="text-decoration: underline;color: #111"class="btn btn-link" data-toggle="modal" data-dismiss="modal" data-target="#register">
-                  Join us
-                  </button>
-                <button type="submit" class="btn btn-success" name="login-submit">Log In</button>
-              </form>
-              </div>
-
-          </div>
-        </div>
-      </div>
-      
-      <!-- The Modal -->
-      <div class="modal fade" id="register">
-        <div class="modal-dialog">
-          <div class="modal-content">
-
-
-
-
-
-      <!-- Modal body -->
-      <div class="modal-body">
-          <h4 class="modal-title">Register</h4>
-              <button type="button" class="close" data-dismiss="modal">&times;</button>
-              <form action="" method="post">
-                
-                <!-- Username Field -->
-
-                <div class="row">
-                    <input type="text" id="username" name="username" placeholder="Username">
-                </div>
-                
-                <br>
-
-                <!-- Email Field -->
-
-                <div class="row">
-                    <input type="text" id="email" name="emailaddress" placeholder="Email address">
-                </div>
-                
-                <br>
-
-                <!-- Password Field -->
-
-                <div class="row">
-                    <input type="password" id="password" name="passcode" placeholder="Password">
-                </div>
-                
-                <br>
-                
-                <!-- Confirm Password Field -->
-
-                <div class="row">
-                    <input type="password" id="confirmpassword" name="confirmpassword" placeholder="Confirm Password">
-                </div>
-
-              </form>
-              </div>  
-              
-
-              <!-- Submit Button -->
-                
-              <div class="modal-footer">
-                <!-- Button to Open the Modal -->  
-                <p>Already a member?</p><button type="button" style="text-decoration: underline;color: #111" class="btn btn-link" data-toggle="modal" data-dismiss="modal" data-target="#signIn">
-                  Log in
-                </button>
-                <button type="button" class="btn btn-success" name="signup-submit">Register</button>
-              </div>
-
-          </div>
-        </div>
-      </div>
-      
       
       <div id="demo" class="carousel slide" data-ride="carousel">
 
-        <!-- Indicators -->
-        <ul class="carousel-indicators">
-          <li data-target="#demo" data-slide-to="0" class="active"></li>
-          <li data-target="#demo" data-slide-to="1"></li>
-          <li data-target="#demo" data-slide-to="2"></li>
-        </ul>
 
         <!-- The slideshow -->
         <div class="carousel-inner">
@@ -159,29 +37,8 @@
               <p></p>
             </div>
           </div>
-          <div class="carousel-item">
-            <img src="https://cdn.glitch.com/b605d689-d5fa-4070-b2f8-e6f277d6eeb5%2Faudience-1850119.jpg?v=1590452069810" alt="Chicago" width="1100" height="500">
-            <div class="carousel-caption">
-              <h1></h1>
-              <p></p>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <img src="https://cdn.glitch.com/b605d689-d5fa-4070-b2f8-e6f277d6eeb5%2Faudience-1835431.jpg?v=1590542217107" alt="New York" width="1100" height="500">
-            <div class="carousel-caption">
-              <h1></h1>
-              <p></p>
-            </div>
-          </div>
         </div>
 
-        <!-- Left and right controls -->
-        <a class="carousel-control-prev" href="#demo" data-slide="prev">
-          <span class="carousel-control-prev-icon"></span>
-        </a>
-        <a class="carousel-control-next" href="#demo" data-slide="next">
-          <span class="carousel-control-next-icon"></span>
-        </a>
       </div>
       <!--
       <div class="slider">
@@ -195,6 +52,14 @@
         require_once("connect.php"); 
       ?>
       <div class="wrapper-main">
+        <?php
+          if (isset($_SESSION['userId'])) {
+            echo '<p class="login-status">You are logged in!</p>';
+          }
+          else {
+            echo '<p class="login-status">You are logged out!</p>';
+          }
+        ?>
         <section class="grid-container-main">
 
         <?php        
@@ -217,15 +82,15 @@
           }
         ?>
         </section>
+        <footer>
+        <?php 
+        require("footer.php");
+        ?>
       </div>
 
   
     </main>
-    <div class="wrapper">
-      <footer>
-        <?php 
-        require("footer.php");
-        ?>
+
 
   
   </body>
