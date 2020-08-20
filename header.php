@@ -18,9 +18,13 @@
           <a class="dropdown-item" href="#">Link 3</a>
         </div>
       </li>-->
-      <li>
-        <a href="music.php">Music</a>
-      </li>
+      <?php 
+        if (isset($_SESSION['userId'])) {
+          echo '<li>
+                  <a href="music.php">Music</a>
+                </li>';
+        }
+      ?>
       <li>
         <a href="contact.html">Contact</a>
       </li>
@@ -28,7 +32,7 @@
         <?php
           if (isset($_SESSION['userId'])) {
             echo '<form action="includes/logout.inc.php" method="post">
-            <button type="submit" name="logout-submit">Logout</button>
+            <button class="login-button" style="cursor: pointer;" type="submit" name="logout-submit">LOGOUT</button>
           </form>';
           }
           else {

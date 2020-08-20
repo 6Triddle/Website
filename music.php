@@ -57,6 +57,16 @@
           </div>
         </div>
         <script type="text/javascript" src="player.js"></script>
+        <script type="text/javascript">
+          $(window).scroll(function() {
+            if($(window).scrollTop() + $(window).height() > $(document).height() - 100) {
+              $('.audio-player-cont').hide();
+            }
+            else {
+              $('.audio-player-cont').show();
+            }
+          });
+        </script>
 
       <?php        
         $query = ("SELECT m.ID, m.Title, al.Album, GROUP_CONCAT(DISTINCT ar.Artist ORDER BY am.ID DESC separator ', ') AS 'Artist', GROUP_CONCAT(DISTINCT g.Genre separator ', ') AS 'Genre', RIGHT(SEC_TO_TIME(m.Duration), 5) AS 'Duration', m.Size, p.Path, m.Filename
