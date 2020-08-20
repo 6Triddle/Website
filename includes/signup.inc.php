@@ -54,7 +54,7 @@ if (isset($_POST['signup-submit'])) {
                                     exit();
                             }
                             else {
-                                    $hashedPwd = password_hash($password, PASSWORD_DEFAULT);
+                                    $hashedPwd = hash("sha256", $password);
                                     
                                     mysqli_stmt_bind_param($stmt, "sss", $username, $email, $hashedPwd);
                                     mysqli_stmt_execute($stmt);

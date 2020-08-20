@@ -24,19 +24,21 @@ if (isset($_POST['login-submit'])) {
             mysqli_stmt_execute($stmt);
             $result = mysqli_stmt_get_result($stmt);
             if ($row = mysqli_fetch_assoc($result)) {
-                $pwdCheck = password_verify($password, $row['password']);
-                if ($pwdCheck == false) {
-                    header("Location: ../index.php?error=wrongpwd");
-                    exit();
-                }
-                else if ($pwdCheck == true) {
+                $hashpass = hash("sha256", $password);
+                $sql1 = "SELECT username FROM users WHERE username = '$mailuid' OR emailaddress = '$mailuid' AND password = '$hashpass'";
+                $result1 = mysqli_query($con, $sql1);
+                $row1 = mysqli_fetch_array($result1, MYSQLI_ASSOC);
+
+                $count = mysqli_num_rows($result1);
+
+                if ($count == 1){
                     session_start();
                     $_SESSION['userId'] = $row['User_ID'];
                     $_SESSION['userUid'] = $row['username'];
 
                     header("Location: ../index.php?login=success");
                     exit();
-                }
+                } 
                 else {
                     header("Location: ../index.php?error=wrongpwd");
                     exit();
