@@ -1,6 +1,7 @@
 <?php 
 if (isset($_POST['signup-submit'])) {
 
+  require 'password_compat-master\lib\password.php';
   require '../connect.php';
   
   $username = $_POST['uid'];
@@ -54,7 +55,7 @@ if (isset($_POST['signup-submit'])) {
                                     exit();
                             }
                             else {
-                                    $hashedPwd = hash("sha256", $password);
+                                    $hashedPwd = password_hash($password, PASSWORD_DEFAULT);
                                     
                                     mysqli_stmt_bind_param($stmt, "sss", $username, $email, $hashedPwd);
                                     mysqli_stmt_execute($stmt);
@@ -73,8 +74,7 @@ if (isset($_POST['signup-submit'])) {
 else {
         header("Location: ../signup.php");
         exit();
-}
-        
+}   
         
         
         
