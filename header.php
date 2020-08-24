@@ -3,7 +3,7 @@
 ?>
 <header>
   <div class="navbar">
-    <ul>
+    <ul class="left-side-nav">
       <li>
         <a href="index.php">Home</a>
       </li>
@@ -28,29 +28,31 @@
       <li>
         <a href="contact.html">Contact</a>
       </li>
-      <li>
-        <?php
-          if (isset($_SESSION['userId'])) {
-            echo '<form action="includes/logout.inc.php" method="post">
-            <button class="login-button" style="cursor: pointer;" type="submit" name="logout-submit">LOGOUT</button>
-          </form>';
-          }
-          else {
-            echo '<li>
-            <!-- Button to Open the Modal -->
-            <button class="login-button" style="cursor: pointer;" data-toggle="modal" data-target="#signIn">
-              LOG IN
-            </button>
-          </li>
-          <li>
-            <!-- Button to Open the Modal -->
-            <button class="register-button" style="cursor: pointer;" data-toggle="modal" data-target="#register">
-              SIGN UP
-            </button>
-          </li>';
-          }
-        ?>
-      </li>
+      </ul>
+      <ul class="right-side-nav">
+        <li>
+          <?php
+            if (isset($_SESSION['userId'])) {
+              echo '<form action="includes/logout.inc.php" method="post">
+              <button class="login-button" style="cursor: pointer;" type="submit" name="logout-submit">LOGOUT</button>
+            </form>';
+            }
+            else {
+              echo '<li>
+              <!-- Button to Open the Modal -->
+              <button class="login-button" style="cursor: pointer;" data-toggle="modal" data-target="#signIn">
+                LOG IN
+              </button>
+            </li>
+            <li>
+              <!-- Button to Open the Modal -->
+              <button class="register-button" style="cursor: pointer;" data-toggle="modal" data-target="#register">
+                SIGN UP
+              </button>
+            </li>';
+            }
+          ?>
+        </li>
       <?php
         if (isset($_GET['signup'])) {
           if ($_GET['signup'] == "success") {

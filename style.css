@@ -515,7 +515,7 @@ form {
 
 .grid-container {
   display: grid;
-  grid-template-columns: 100px 200px 200px 166.66px 166.66px 166.66px;
+  grid-template-columns: 100px 190px 10px 180px 20px 156.66px 10px 166.66px 166.66px;
   grid-template-rows: 100px;
   grid-gap: auto;
   padding: 1px;
@@ -523,11 +523,14 @@ form {
 
 .grid-container > div {
   padding: 10px 0;
-  font-size: 14px;
+  font-size: 17px;
 }
 
 .grid-container div {
   margin: auto 0;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .item1 {
@@ -665,6 +668,7 @@ form {
   font-size: 13px;
 }
 
+
 .register-button:focus { outline: none; }
 
 .login-button:focus { outline: none; }
@@ -701,4 +705,27 @@ form {
 input:required:focus {
   border: 1px solid black;
   outline: none;
+}
+
+
+
+/* Tooltip text */
+.item2 .tooltiptext {
+  
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+ 
+  /* Position the tooltip text - see examples below! */
+  position: absolute;
+  z-index: 1;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.item2:hover .tooltiptext {
+  visibility: visible;
 }

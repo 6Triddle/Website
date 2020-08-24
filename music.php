@@ -109,18 +109,25 @@
           </script>
           </div>
           <div class="item2">
-            <?php echo $output['Title']; ?>
+          <?php echo $output['Title']; ?>
+            <span class="tooltiptext"><?php echo $output['Title']; ?></span>
           </div>
           <div class="item3">
-            <p><?php echo $output['Album']; ?></p>
           </div>
           <div class="item4">
-            <p href="#"><?php echo $output['Artist']; ?></p>
+            <p><?php echo $output['Album']; ?></p>
           </div>
           <div class="item5">
-            <p><?php echo $output['Genre']; ?></p>
           </div>
           <div class="item6">
+            <p href="#"><?php echo $output['Artist']; ?></p>
+          </div>
+          <div class="item7">
+          </div>
+          <div class="item8">
+            <p><?php echo $output['Genre']; ?></p>
+          </div>
+          <div class="item9">
             <p><?php echo $output['Duration']; ?></p>
           </div>
         </section>
