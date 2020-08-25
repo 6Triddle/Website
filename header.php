@@ -31,11 +31,19 @@
       </ul>
       <ul class="right-side-nav">
         <li>
+        <p><?php echo $output[$_SESSION['userUid']]; ?></p>
           <?php
             if (isset($_SESSION['userId'])) {
-              echo '<form action="includes/logout.inc.php" method="post">
-              <button class="login-button" style="cursor: pointer;" type="submit" name="logout-submit">LOGOUT</button>
-            </form>';
+              echo '<div class="dropdown">
+              <img class="circle-img" src="images/account-icon.png">
+              <button onclick="myFunction()" class="dropbtn"><?php echo $output["userUid"]; ?></button>
+              <div id="myDropdown" class="dropdown-content">
+                <a href="#home">Account</a>
+                <form action="includes/logout.inc.php" method="post">
+                  <button style="cursor: pointer;" type="submit" name="logout-submit">LOGOUT</button>
+                </form>
+              </div>
+            </div>';
             }
             else {
               echo '<li>
@@ -53,6 +61,7 @@
             }
           ?>
         </li>
+        <script type="text/javascript" src="dropdown.js"></script>
       <?php
         if (isset($_GET['signup'])) {
           if ($_GET['signup'] == "success") {
