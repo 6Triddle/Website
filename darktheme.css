@@ -1,6 +1,10 @@
 [data-theme=dark] {
-    color: #bebebe;
+    color: #fff;
     background-color: #222
+}
+
+[data-theme=light] {
+    color: #fff;
 }
 
 [data-theme=dark] pre {
@@ -26,7 +30,7 @@
 }
 
 [data-theme=dark] .list-group-item.list-group-item-action:focus,[data-theme=dark] .list-group-item.list-group-item-action:hover {
-    background-color: #222
+    background-color: #222;
 }
 
 [data-theme=dark] .list-group-item.active,[data-theme=dark] .list-group-item.active:focus,[data-theme=dark] .list-group-item.active:hover {

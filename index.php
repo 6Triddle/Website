@@ -15,12 +15,13 @@
     
     <!-- import the webpage's stylesheet -->
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="darktheme.scss">
+    <link rel="stylesheet" href="darktheme.css"/>
     
     <!-- import the webpage's javascript file -->
     <script src="/script.js" defer></script>
   </head>  
   <body>
+    <script src="theme.js"></script>
     <?php
         if (isset($_GET['signup'])) {
           if ($_GET['signup'] == "success") {
@@ -97,6 +98,5 @@
     </main>
 
 
-    <script src="theme.ts"></script>
   </body>
 </html>
