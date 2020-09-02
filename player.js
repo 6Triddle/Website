@@ -1,3 +1,5 @@
+songID = 0
+
 var songs = [];
 
 var songTitleList = [];
@@ -18,12 +20,9 @@ var prevImg = 0;
 var song = new Audio();
 var currentSong = 0;
 
-window.onload = loadSong;
-
 function loadSong () {
 	song.src = "Music/" + songs[currentSong];
 	songTitle.textContent = (currentSong + 1) + ". " + songTitleList[currentSong];
-	nextSongTitle.innerHTML = "<b>Next Song: </b>" + songTitleList[currentSong + 1 % songs.length];
 	song.playbackRate = 1;
 	song.volume = volumeSlider.value;
 	setTimeout(showDuration, 1000);
@@ -35,9 +34,6 @@ function updateSongSlider () {
 	var c = Math.round(song.currentTime);
 	songSlider.value = c;
 	currentTime.textContent = convertTime(c);
-	if(song.ended){
-		next();
-	}
 }
 
 function convertTime (secs) {
@@ -68,8 +64,8 @@ function playOrPauseSong () {
 	}
 }
 
-function playSong (img, songID) { 
-	if (songID == prevID) { 
+function playSong (img, song_ID) { 
+	if (song_ID == prevID) { 
 		if(song.paused){
 			song.play();
 			mainPlayOrPause.src = "images/MainPause.png";
@@ -86,15 +82,16 @@ function playSong (img, songID) {
 		prevImg = img;
 		img.src = "images/pause.png";
 		mainPlayOrPause.src = "images/mainPause.png";
-		prevID = songID;
-		songID -= 1;
-		song.src = "Music/" + songs[songID];
-		songTitle.textContent = (songID + 1) + ". " + songTitleList[songID];
-		nextSongTitle.innerHTML = "<b>Next Song: </b>" + songTitleList[songID + 1 % songs.length];
+		prevID = song_ID;
+		song_ID -= 1;
+		song.src = "Music/" + songs[song_ID];
+		songTitle.textContent = (song_ID + 1) + ". " + songTitleList[song_ID];
 		song.playbackRate = 1;
 		song.volume = volumeSlider.value;
+		setTimeout(showDuration, 500);
 		song.play();
 	}
+
 }
 
 

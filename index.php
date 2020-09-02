@@ -15,11 +15,24 @@
     
     <!-- import the webpage's stylesheet -->
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="darktheme.scss">
     
     <!-- import the webpage's javascript file -->
     <script src="/script.js" defer></script>
   </head>  
   <body>
+    <?php
+        if (isset($_GET['signup'])) {
+          if ($_GET['signup'] == "success") {
+            echo '<div class="signup-success"><p>Signup successful</p></div>';
+          }
+        }
+        else if (isset($_GET['login'])) {
+          if ($_GET['login'] == "success") {
+            echo '<div class="signup-success"><p>Login successful</p></div>';
+          }
+        }
+    ?>
     <?php 
     require("header.php");
     ?>
@@ -33,7 +46,7 @@
           <div class="carousel-item active">
             <img class="first" src="https://cdn.glitch.com/b605d689-d5fa-4070-b2f8-e6f277d6eeb5%2Fturntable-1109588.jpg?v=1590540745660" alt="Los Angeles" width="1100" height="500">
             <div class="carousel-caption">
-              <h1></h1>
+              <h1>GRAEME'S MUSIC</h1>
               <p></p>
             </div>
           </div>
@@ -52,14 +65,6 @@
         require_once("connect.php"); 
       ?>
       <div class="wrapper-main">
-        <?php
-          if (isset($_SESSION['userId'])) {
-            echo '<p class="login-status">You are logged in!</p>';
-          }
-          else {
-            echo '<p class="login-status">You are logged out!</p>';
-          }
-        ?>
         <section class="grid-container-main">
 
         <?php        
@@ -92,6 +97,6 @@
     </main>
 
 
-  
+    <script src="theme.ts"></script>
   </body>
 </html>

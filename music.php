@@ -18,16 +18,31 @@
     
     <!-- import the webpage's javascript file -->
     <script src="/script.js" defer></script>
+    
   </head>  
-  <body>
+  <body class="music-page">
     <?php 
     require("header.php");
     ?>
     <main>
        
       <?php
-        require_once("connect.php"); 
+        require("connect.php"); 
       ?>
+
+      <div class="aside">
+
+        <ul>
+          <li>
+          <a href='music.php?id=1'>Title, Artist DESC</a>
+          </li>
+          <br>
+          <li>
+            <a href='music.php?id=2'>Genre, Artist ASC</a>
+          </li>
+        </ul>
+
+      </div>
 
       <div class="wrapper">
 
@@ -35,15 +50,24 @@
 
         <img src="images/Music.png" width="150px" height="150px">
 
+        <?php 
+          $query = ("SELECT SEC_TO_TIME( SUM( m.Duration ) ) AS `Total Duration`
+          FROM main AS m");
+          $result = mysqli_query($con,$query);
+              
+          while($output = mysqli_fetch_array($result))
+          {
+        ?>
+          <p style="float:right; font-size: 20px; margin-top: 100px;"><b>Total Duration: </b><?php echo $output['Total Duration']; ?></p>
+        <?php
+          }
+        ?>
+
         <div class="audio-player-cont">
           <div class="controllers">
-            <img src="images/backward.png" width="30px" onclick="previous();" style="margin-left:350px;" />
-            <img src="images/rewind.png" width="30px" onclick="decreasePlaybackRate();" />
-            <img id="mainPlayOrPause" src="images/mainPlay.png" width="40px" onclick="playOrPauseSong();" />
-            <img src="images/fast-forward.png" width="30px" onclick="increasePlaybackRate();" />
-            <img src="images/forward.png" width="30px" onclick="next();" />
-            <img src="images/volume-down.png" width="15px" style="margin-left:315px;"/>
-            <input id="volumeSlider" class="volume-slider" type="range" min="0" max="1" step="0.01" onchange="adjustVolume()" />
+            <img id="mainPlayOrPause" src="images/mainPlay.png" width="40px" onclick="playOrPauseSong();" style="margin-right:350px;" />
+            <img src="images/volume-down.png" width="15px" style="margin-left:460px;"/>
+            <input id="volumeSlider" class="volume-slider" type="range" min="0" max="1" value="0.15" step="0.01" onchange="adjustVolume()" />
             <img src="images/volume-up.png" width="15px" style="margin-left:2px;" />
           </div>
           <div class="player">
@@ -53,64 +77,109 @@
               <div id="currentTime" class="current-time">00:00</div>
                 <div id="duration" class="duration">00:00</div>
               </div>
-            <div id="nextSongTitle" class="song-title"><b>Next Song: </b>Next song title goes here...</div>
+            <div id="nextSongTitle" class="song-title"><b</b></div>
           </div>
         </div>
         <script type="text/javascript" src="player.js"></script>
-        <script type="text/javascript">
-          $(window).scroll(function() {
-            if($(window).scrollTop() + $(window).height() > $(document).height() - 100) {
-              $('.audio-player-cont').hide();
-            }
-            else {
-              $('.audio-player-cont').show();
-            }
-          });
-        </script>
 
-      <?php        
-        $query = ("SELECT m.ID, m.Title, al.Album, GROUP_CONCAT(DISTINCT ar.Artist ORDER BY am.ID DESC separator ', ') AS 'Artist', GROUP_CONCAT(DISTINCT g.Genre separator ', ') AS 'Genre', RIGHT(SEC_TO_TIME(m.Duration), 5) AS 'Duration', m.Size, p.Path, m.Filename
-        FROM main as m
-        JOIN artist_to_main as am ON m.ID = am.ID
-        JOIN artist as ar on ar.Artist_PK = am.Artist_PK
-        JOIN genre_to_main as gm ON m.ID = gm.ID
-        JOIN genre as g on g.Genre_PK = gm.Genre_PK
-        LEFT JOIN album as al ON m.FK_Album = al.Album_PK
-        LEFT JOIN path as p on m.FK_Path = p.Path_PK
-        GROUP BY m.ID");
-        $query2 = ("SELECT SEC_TO_TIME( SUM( m.Duration ) ) AS `Total Duration`
-        FROM main AS m");
-        $result = mysqli_query($con,$query);
-            
+      <section class="grid-container">
+        <div class="item1">
+        </div>
+        <div class="item2">
+          <h1>Title</h1>
+        </div>
+        <div class="item3">
+        </div>
+        <div class="item4">
+          <h1>Album</h1>
+        </div>
+        <div class="item5">
+        </div>
+          <div class="item6">
+            <h1>Artist</h1>
+          </div>
+          <div class="item7">
+          </div>
+          <div class="item8">
+            <h1>Genre</h1>
+          </div>
+          <div class="item9">
+            <h1>Duration</h1>
+          </div>
+      </section>
+
+      <?php
+        if (isset($_GET['id'])) {
+          $id = $_GET['id'];
+          switch ($id)
+          {
+              case '1':
+                $query = ("SELECT m.ID, m.Title, al.Album, GROUP_CONCAT(DISTINCT ar.Artist separator ', ') AS 'Artist', GROUP_CONCAT(DISTINCT g.Genre separator ', ') AS 'Genre', RIGHT(SEC_TO_TIME(m.Duration), 5) AS 'Duration', m.Size, p.Path, m.Filename
+                FROM main as m
+                JOIN artist_to_main as am ON m.ID = am.ID
+                JOIN artist as ar on ar.Artist_PK = am.Artist_PK
+                JOIN genre_to_main as gm ON m.ID = gm.ID
+                JOIN genre as g on g.Genre_PK = gm.Genre_PK
+                LEFT JOIN album as al ON m.FK_Album = al.Album_PK
+                LEFT JOIN path as p on m.FK_Path = p.Path_PK
+                GROUP BY m.ID
+                ORDER BY m.Title DESC, ar.Artist DESC");
+                $result = mysqli_query($con,$query);
+                break;
+
+              case '2':
+                $query = ("SELECT m.ID, m.Title, al.Album, GROUP_CONCAT(DISTINCT ar.Artist separator ', ') AS 'Artist', GROUP_CONCAT(DISTINCT g.Genre separator ', ') AS 'Genre', RIGHT(SEC_TO_TIME(m.Duration), 5) AS 'Duration', m.Size, p.Path, m.Filename
+                FROM main as m
+                JOIN artist_to_main as am ON m.ID = am.ID
+                JOIN artist as ar on ar.Artist_PK = am.Artist_PK
+                JOIN genre_to_main as gm ON m.ID = gm.ID
+                JOIN genre as g on g.Genre_PK = gm.Genre_PK
+                LEFT JOIN album as al ON m.FK_Album = al.Album_PK
+                LEFT JOIN path as p on m.FK_Path = p.Path_PK
+                GROUP BY m.ID 
+                ORDER BY g.Genre ASC, ar.Artist ASC");
+                $result = mysqli_query($con,$query);
+                break;
+
+
+
+          } 
+        } else {
+          $query = ("SELECT m.ID, m.Title, al.Album, GROUP_CONCAT(DISTINCT ar.Artist separator ', ') AS 'Artist', GROUP_CONCAT(DISTINCT g.Genre separator ', ') AS 'Genre', RIGHT(SEC_TO_TIME(m.Duration), 5) AS 'Duration', m.Size, p.Path, m.Filename
+          FROM main as m
+          JOIN artist_to_main as am ON m.ID = am.ID
+          JOIN artist as ar on ar.Artist_PK = am.Artist_PK
+          JOIN genre_to_main as gm ON m.ID = gm.ID
+          JOIN genre as g on g.Genre_PK = gm.Genre_PK
+          LEFT JOIN album as al ON m.FK_Album = al.Album_PK
+          LEFT JOIN path as p on m.FK_Path = p.Path_PK
+          GROUP BY m.ID");
+          $result = mysqli_query($con,$query);
+        }
+
+
         while($output = mysqli_fetch_array($result))
-        {
+          {
+            
+      
         ?>
         
         <section class="grid-container">
           <div class="item1">
-          <!--
-          <script type="text/javascript" src="jquery-1.7.1.js"></script>
-          <script type="text/javascript">
-            $(document).ready( function() {
-            $('#<?php echo $output['Filename']; ?>').click(function(){
-              $('#wrap').append('<embed id="embed_player" src="<?php echo $output['Path']; ?><?php echo $output['Filename']; ?>" autostart="true" hidden="true"></embed>');
-            });
-            });
-          </script>
-          <img name="<?php echo $output['Filename']; ?>" src="images/Play Button.png" width="50" height="50" border="0" id="<?php echo $output['Filename']; ?>" alt="" />
-          <div id="wrap">&nbsp;</div>
-          -->
-          <audio id="<?php echo $output['Filename']; ?>" src="<?php echo $output['Path']; ?><?php echo $output['Filename']; ?>" preload="auto"></audio>
-          <img id="songID" src="images/play.png" width="40px" onclick="playSong(this, songID = <?php echo $output['ID']; ?>);">
-          <script type="text/javascript">
-            songIDList.push(songID);
-            songs.push("<?php echo $output['Filename']; ?>");
-            songTitleList.push("<?php echo $output['Title']; ?>");
-          </script>
+            <script type="text/javascript">
+              songID+=1
+              song_ID<?php echo str_replace(' ', '', preg_replace('/[^a-zA-Z]+/', '',  $output['Title']))?> = songID
+            </script>
+            <audio id="<?php echo $output['Filename']; ?>" src="<?php echo $output['Path']; ?><?php echo $output['Filename']; ?>" preload="auto"></audio>
+            <img id="songID" src="images/play.png" width="40px" onclick="playSong(this, song_ID<?php echo str_replace(' ', '', preg_replace('/[^a-zA-Z]+/', '',  $output['Title']))?>);">
+            <script type="text/javascript">
+              songIDList.push(song_ID<?php echo str_replace(' ', '', preg_replace('/[^a-zA-Z]+/', '',  $output['Title']))?>);
+              songs.push("<?php echo $output['Filename']; ?>");
+              songTitleList.push("<?php echo $output['Title']; ?>");
+            </script>
           </div>
           <div class="item2">
           <?php echo $output['Title']; ?>
-            <span class="tooltiptext"><?php echo $output['Title']; ?></span>
           </div>
           <div class="item3">
           </div>
@@ -120,7 +189,7 @@
           <div class="item5">
           </div>
           <div class="item6">
-            <p href="#"><?php echo $output['Artist']; ?></p>
+            <p><?php echo $output['Artist']; ?></p>
           </div>
           <div class="item7">
           </div>
@@ -134,26 +203,11 @@
 
         <?php
         }
-        $query = ("SELECT SEC_TO_TIME( SUM( m.Duration ) ) AS `Total Duration`
-        FROM main AS m");
-        $result = mysqli_query($con,$query);
-            
-        while($output = mysqli_fetch_array($result))
-        {
-      ?>
-        <p><?php echo $output['Total Duration']; ?></p>
-      <?php
-        }
       ?>
         
       </div>
   
     </main>
-    <div class="wrapper">
-      <footer class="music">
-        <?php 
-        require("footer.php");
-        ?>
 
   </body>
 </html>

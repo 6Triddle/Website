@@ -25,25 +25,32 @@
                 </li>';
         }
       ?>
-      <li>
-        <a href="contact.html">Contact</a>
-      </li>
       </ul>
       <ul class="right-side-nav">
         <li>
-        <p><?php echo $output[$_SESSION['userUid']]; ?></p>
+        <script src="darkswitch.js"></script>
+        </li>
+        <li>
           <?php
             if (isset($_SESSION['userId'])) {
-              echo '<div class="dropdown">
-              <img class="circle-img" src="images/account-icon.png">
-              <button onclick="myFunction()" class="dropbtn"><?php echo $output["userUid"]; ?></button>
+              ?>
+              <div class=dropdown>
+              <button onclick="myFunction()" class="dropbtn">
+                <?php echo ucfirst(strtolower($_SESSION["userUid"])); ?> &#9660;
+              </button>
               <div id="myDropdown" class="dropdown-content">
-                <a href="#home">Account</a>
+                <?php if ($_SESSION['userUid'] == "Graeme") { ?>
+                <a style="color: #989898; font-family: inherit;font-size: 17px;" href="account.php">Account</a>
+                <hr>
+                <?php } ?>
                 <form action="includes/logout.inc.php" method="post">
-                  <button style="cursor: pointer;" type="submit" name="logout-submit">LOGOUT</button>
-                </form>
+                  <a href="#">
+                    <button style="color: #989898; font-family: 'proxima_nova_rgregular';" type="submit" name="logout-submit">Log out</button>
+                  </a>
+                </form>  
               </div>
-            </div>';
+            </button>
+            <?php
             }
             else {
               echo '<li>
@@ -62,18 +69,6 @@
           ?>
         </li>
         <script type="text/javascript" src="dropdown.js"></script>
-      <?php
-        if (isset($_GET['signup'])) {
-          if ($_GET['signup'] == "success") {
-            echo '<p class="signup-success">Signup successful.</p>';
-          }
-        }
-        else if (isset($_GET['login'])) {
-          if ($_GET['login'] == "success") {
-            echo '<p class="signup-success">Login successful.</p>';
-          }
-        }
-      ?>
     </ul>
   </div>  
 </header>
@@ -153,11 +148,7 @@
                     }
                   }
                 ?>
-                
-                <div class="row">
-                  <input type="checkbox" id="defaultCheck" name="example2">
-                  <label for="defaultCheck">Keep me signed in</label>     
-                </div>
+
               </div>  
               
 
