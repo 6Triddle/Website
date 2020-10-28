@@ -28,7 +28,28 @@
       </ul>
       <ul class="right-side-nav">
         <li>
-        <script src="darkswitch.js"></script>
+        <script type="text/javascript">
+
+          if (window.location.href.indexOf("index") > -1) {
+            
+          }
+          else {
+            document.write(`
+            <div class="custom-control custom-switch">
+            <input type="checkbox" class="custom-control-input" id="darkSwitch">
+            <label class="custom-control-label" for="darkSwitch">Dark Mode</label>
+            </div>
+            `);
+            const darkSwitch = document.getElementById('darkSwitch');
+            darkSwitch.checked = getTheme() === 'dark';
+            darkSwitch.onchange = ()=>{
+                setTheme(darkSwitch.checked ? 'dark' : 'light');
+            }
+            ;
+            themeChangeHandlers.push(theme=>darkSwitch.checked = theme === 'dark');
+          }
+
+        </script>
         </li>
         <li>
           <?php
@@ -45,7 +66,7 @@
                 <?php } ?>
                 <form action="includes/logout.inc.php" method="post">
                   <a href="#">
-                    <button style="color: #989898; font-family: 'proxima_nova_rgregular';" type="submit" name="logout-submit">Log out</button>
+                    <button style="color: #989898;" type="submit" name="logout-submit">Log out</button>
                   </a>
                 </form>  
               </div>

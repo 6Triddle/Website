@@ -101,44 +101,16 @@ input, select {
     vertical-align:middle;
 }
 
-/*FONT*/
 
-@font-face {
-	font-family: 'proxima_nova_rgregular';
-	src: url('https://litmus.com/fonts/Emails/proximanova-regular-webfont.eot');
-	src: url('https://litmus.com/fonts/Emails/proximanova-regular-webfont.eot?#iefix') format('embedded-opentype'),
-		 url('https://litmus.com/fonts/Emails/proximanova-regular-webfont.woff') format('woff'),
-		 url('https://litmus.com/fonts/Emails/proximanova-regular-webfont.ttf') format('truetype'),
-		 url('https://litmus.com/fonts/Emails/proximanova-regul.+ar-webfont.svg#proxima_nova_rgregular') format('svg');
-	font-weight: normal;
-	font-style: normal;
-}
-@font-face {
-	font-family: 'proxima_nova_rgbold';
-	src: url('https://litmus.com/fonts/Emails/proximanova-bold-webfont.eot');
-	src: url('https://litmus.com/fonts/Emails/proximanova-bold-webfont.eot?#iefix') format('embedded-opentype'),
-		 url('https://litmus.com/fonts/Emails/proximanova-bold-webfont.woff') format('woff'),
-		 url('https://litmus.com/fonts/Emails/proximanova-bold-webfont.ttf') format('truetype'),
-		 url('https://litmus.com/fonts/Emails/proximanova-bold-webfont.svg#proxima_nova_rgbold') format('svg');
-	font-weight: normal;
-	font-style: normal;
-}
-
-@font-face {
-	font-family: 'adelle_rgregular';
-	src: url('https://litmus.com/fonts/Emails/adelle_reg-webfont.eot');
-	src: url('https://litmus.com/fonts/Emails/adelle_reg-webfont.eot?#iefix') format('embedded-opentype'),
-		 url('https://litmus.com/fonts/Emails/adelle_reg-webfont.woff') format('woff'),
-		 url('https://litmus.com/fonts/Emails/adelle_reg-webfont.ttf') format('truetype'),
-		 url('https://litmus.com/fonts/Emails/adelle_reg-webfont.svg#adelle_rgregular') format('svg');
-	font-weight: normal;
-	font-style: normal;
-}
 body{
-	font-family: 'proxima_nova_rgregular', Helvetica, Arial, sans-serif;
+	font-family: 'Roboto', sans-serif;
 }
 h1{
-   font-family: 'proxima_nova_rgbold', Helvetica, Arial, sans-serif;
+   font-family: 'Roboto', sans-serif;
+}
+
+.music-page {
+  font-family: Helvetica, Arial, sans-serif
 }
 
 
@@ -244,14 +216,7 @@ header .navbar ul li a {
   .wrapper {
     position: relative;
     top: 100px;
-    width: 1050px;
-    margin: 0 auto;
     padding-bottom: 200px;
-  }
-
-  .music-page {
-    background-color: #222;
-    color: #fff;
   }
 
   .wrapper-main {
@@ -311,9 +276,9 @@ footer {
   padding: 40px 40px;
   background-color: #000;
   overflow: hidden;
-  top: 300px;
-  position: absolute;
-}
+  bottom: 0px;
+  position: relative;
+} 
 
 body {
   padding-bottom: 100px; 
@@ -400,17 +365,14 @@ footer ul li a{
   font-size: 60px;
   letter-spacing: 3.5px;
   text-align: center;
-}
-
-[data-theme=light] .carousel-caption h1 {
   color: #fff;
   text-shadow: 2px 2px 10px #000;
 }
 
-[data-theme=dark] .carousel-caption h1 {
-  color: #222;
-  text-shadow: 2px 2px 10px #bbb;
-}
+
+  
+
+
 
 .carousel-caption p {
   position: relative;
@@ -563,7 +525,7 @@ form {
 
 .audio-player-cont{
 	width: 100%;
-  height: 150px;
+  height: 75px;
   position: fixed;
   left: 0;
   bottom: 0;
@@ -928,3 +890,96 @@ hr {
   color: white;
   background-color: #222;
 }
+
+#music-page {
+  position: relative;
+  border-collapse: collapse;
+  width: 75vw;
+  float: right;
+  margin-right: 100px;
+  margin-bottom: 300px;
+}
+
+#music-page td, #music-page th {
+  vertical-align: middle;
+  padding: 8px;
+}
+
+
+#music-page th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #000;
+  font-weight: 500;
+}
+
+#music-page th:last-of-type {
+ width: 110px;
+}
+
+[data-theme=light] #music-page th a {
+  font-size: 14px;
+  color: black;
+  text-transform: uppercase;
+}
+
+[data-theme=dark] #music-page th a {
+  font-size: 14px;
+  color: white;
+  text-transform: uppercase;
+}
+
+#music-page td {
+  font-size: 14px;
+}
+
+#songID {
+  width: 30px;
+}
+
+.total-duration {
+  font-size: 16px; 
+  float: right; 
+  position: relative;
+  margin-right: 50px;
+}
+
+.total-duration b {
+  text-transform: uppercase;
+}
+
+#playerchange {
+  border: none;
+  background-color: transparent;
+}
+
+#playerchange:focus {
+  outline: none;
+}
+
+[data-theme=dark] .total-duration {color:white;}
+
+[data-theme=light] .total-duration {color:#111;}
+
+[data-theme=dark] #music-page tr {background-color: #000}
+
+[data-theme=dark] #music-page tr:nth-child(even){background-color: #050505;}
+
+[data-theme=dark] #music-page tr:hover {background-color: #333;}
+
+[data-theme=dark] #music-page th {background-color: #000;}
+
+[data-theme=light] #music-page tr {background-color: #fff; color: #111;}
+
+[data-theme=light] #music-page tr:nth-child(even){background-color: #eee; color: #111;}
+
+[data-theme=light] #music-page tr:hover {background-color: #ddd; color: #111;}
+
+[data-theme=light] #music-page th {background-color: #fff; color: #111;}
+
+.header-music {
+  padding-left: 16.5vw;
+}
+
+[data-theme=light] .header-music {color: black; }
