@@ -14,10 +14,10 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
     
     <!-- import the webpage's stylesheet -->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
     
     <!-- import the webpage's javascript file -->
-    <script src="/script.js" defer></script>
+    <script src="js/script.js" defer></script>
   </head>  
   <body id="main-page">
     <?php
@@ -40,26 +40,18 @@
       <div id="demo" class="carousel slide" data-ride="carousel">
 
 
-        <!-- The slideshow -->
+        <!-- Banner Image Bootstrap Scales for different screen sizes -->
         <div class="carousel-inner">
           <div class="carousel-item active">
-            <img class="first" src="https://cdn.glitch.com/b605d689-d5fa-4070-b2f8-e6f277d6eeb5%2Fturntable-1109588.jpg?v=1590540745660" alt="Los Angeles" width="1100" height="500">
+            <img class="first" src="images/Banner.jpg" alt="Graeme's Music">
             <div class="carousel-caption">
               <h1>GRAEME'S MUSIC</h1>
-              <p></p>
             </div>
           </div>
         </div>
 
       </div>
-      <!--
-      <div class="slider">
-        <div class="slide slide1"><section class="index-banner"><div class="vertical-center"><h2>Website</h2><h1>This is my website</h1></div></section></div>
-        <div class="slide slide2"><section class="index-banner"><div class="vertical-center"><h2>Website</h2><h1>This is my website</h1></div></section></div>
-        <div class="slide slide3"><section class="index-banner"><div class="vertical-center"><h2>Website</h2><h1>This is my website</h1></div></section></div>
-      </div><a class="arrow-left" href="javascript:void(0);"></a><a class="arrow-right" href="javascript:void(0);"></a>
-	    <div class="dots-wrapper"></div>
-      -->
+
       <?php
         require_once("connect.php"); 
       ?>
@@ -79,7 +71,7 @@
         ?>
 
           <div class="album">
-            <img src="<?php echo $output['Image']; ?>"/>
+            <img src="<?php echo $output['Image']; ?>" alt="<?php echo $output['Image']; ?>">
           </div>
 
         <?php 

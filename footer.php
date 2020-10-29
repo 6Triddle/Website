@@ -15,5 +15,6 @@
   <ul class="footer-links-cases">
 
   </ul>
+  <p>All images sourced from Wikipedia & Genius</p>
 </footer>
 </div>

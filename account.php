@@ -14,15 +14,13 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
         
         <!-- import the webpage's stylesheet -->
-        <link rel="stylesheet" href="style.css">
-        <link rel="stylesheet" href="darktheme.css"/>
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/darktheme.css"/>
         
-        <!-- import the webpage's javascript file -->
-        <script src="/script.js" defer></script>
     
     </head>  
     <body>
-        <script src="theme.js"></script>
+        <script src="js/theme.js"></script>
         <?php
             if (isset($_GET['add'])) {
             if ($_GET['add'] == "success") {
@@ -156,7 +154,7 @@
 
                     <!-- Modal body -->
                     <div class="modal-body">
-                        <h4 style="color: #111;" class="modal-title">Edit User #<?php echo $output['User_ID'];?></h4>
+                        <h4 class="modal-title">Edit User #<?php echo $output['User_ID'];?></h4>
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
                             <form action="includes/signup.inc.php" method="post">
 

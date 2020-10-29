@@ -7,17 +7,6 @@
       <li>
         <a href="index.php">Home</a>
       </li>
-      <!-- Dropdown 
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-          Links
-        </a>
-        <div class="dropdown-menu">
-          <a class="dropdown-item" href="#">Link 1</a>
-          <a class="dropdown-item" href="#">Link 2</a>
-          <a class="dropdown-item" href="#">Link 3</a>
-        </div>
-      </li>-->
       <?php 
         if (isset($_SESSION['userId'])) {
           echo '<li>
@@ -61,12 +50,12 @@
               </button>
               <div id="myDropdown" class="dropdown-content">
                 <?php if ($_SESSION['userUid'] == "Graeme") { ?>
-                <a style="color: #989898; font-family: inherit;font-size: 17px;" href="account.php">Account</a>
+                <b><a style="color: #989898; font-family: inherit;font-size: 17px;" href="account.php">Account</a></b>
                 <hr>
                 <?php } ?>
                 <form action="includes/logout.inc.php" method="post">
                   <a href="#">
-                    <button style="color: #989898;" type="submit" name="logout-submit">Log out</button>
+                    <b><button style="color: #989898;" type="submit" name="logout-submit">Log out</button></b>
                   </a>
                 </form>  
               </div>
@@ -89,7 +78,7 @@
             }
           ?>
         </li>
-        <script type="text/javascript" src="dropdown.js"></script>
+        <script type="text/javascript" src="js/dropdown.js"></script>
     </ul>
   </div>  
 </header>
@@ -177,7 +166,7 @@
                 
               <div class="modal-footer">
                 <!-- Button to Open the Modal -->
-                <p>Not a member?</p><button type="button" style="text-decoration: underline;color: #111"class="btn btn-link" data-toggle="modal" data-dismiss="modal" data-target="#register">
+                <p>Not a member?</p><button type="button" style="text-decoration: underline; color: black;"class="btn btn-link" data-toggle="modal" data-dismiss="modal" data-target="#register">
                   Join us
                   </button>
                 <button type="submit" class="btn btn-success" name="login-submit">Log In</button>
@@ -388,7 +377,7 @@
                 
               <div class="modal-footer">
                 <!-- Button to Open the Modal -->  
-                <p>Already a member?</p><button type="button" style="text-decoration: underline;color: #111" class="btn btn-link" data-toggle="modal" data-dismiss="modal" data-target="#signIn">
+                <p>Already a member?</p><button type="button" style="text-decoration: underline; color: black;" class="btn btn-link" data-toggle="modal" data-dismiss="modal" data-target="#signIn">
                   Log in
                 </button>
                 <button type="submit" class="btn btn-success" name="signup-submit">Register</button>
