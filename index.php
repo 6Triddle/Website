@@ -37,17 +37,12 @@
     ?>
     <main>
       
-      <div id="demo" class="carousel slide" data-ride="carousel">
+      <!-- Banner -->
+      <div class="banner">
 
-
-        <!-- Banner Image Bootstrap Scales for different screen sizes -->
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <img class="first" src="images/Banner.jpg" alt="Graeme's Music">
-            <div class="carousel-caption">
-              <h1>GRAEME'S MUSIC</h1>
-            </div>
-          </div>
+        <img src="images/Banner.jpg" alt="Graeme's Music">
+        <div class="carousel-caption">
+          <h1>GRAEME'S MUSIC</h1>
         </div>
 
       </div>
