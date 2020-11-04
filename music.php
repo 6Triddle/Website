@@ -18,6 +18,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
     
     <!-- Importing stylesheets -->
     <link rel="stylesheet" href="css/style.css">
@@ -27,7 +28,9 @@
     
   </head>  
   <body class="music-page">
+
     <script src="js/theme.js"></script>
+
     <?php 
     require("header.php");
     ?>
@@ -45,6 +48,7 @@
 
 
         <?php 
+          // Total Duration Query
           $query = ("SELECT DISTINCT CONCAT(
                      MOD(TIME_FORMAT(SEC_TO_TIME(9832), '%H'), 24), 'h ',
                      TIME_FORMAT(SEC_TO_TIME(9832), '%imin')
@@ -79,60 +83,56 @@
         if (isset($_GET['order'])) {
           if ($_GET['order']=="genre") {
             
-            // Order by Genre Query
-            $query = ("SELECT m.ID, m.Title, al.Album, GROUP_CONCAT(DISTINCT ar.Artist separator ', ') AS 'Artist', GROUP_CONCAT(DISTINCT g.Genre separator ', ') AS 'Genre', RIGHT(SEC_TO_TIME(m.Duration), 5) AS 'Duration', m.Size, p.Path, m.Filename, m.Spotifytrackid
+            // Order by Genre Ascending Query
+            $query = ("SELECT m.ID, m.Title, al.Album, GROUP_CONCAT(DISTINCT ar.Artist separator ', ') AS 'Artist', GROUP_CONCAT(DISTINCT g.Genre separator ', ') AS 'Genre', RIGHT(SEC_TO_TIME(m.Duration), 5) AS 'Duration', m.Spotifytrackid
             FROM main as m
             JOIN artist_to_main as am ON m.ID = am.ID
             JOIN artist as ar on ar.Artist_PK = am.Artist_PK
             JOIN genre_to_main as gm ON m.ID = gm.ID
             JOIN genre as g on g.Genre_PK = gm.Genre_PK
             LEFT JOIN album as al ON m.FK_Album = al.Album_PK
-            LEFT JOIN path as p on m.FK_Path = p.Path_PK
             GROUP BY m.ID
             ORDER BY g.Genre, ar.Artist ASC"); 
           }
 
           else if ($_GET['order']=="genredesc") {
           
-            // Order by Genre Desc Query
-            $query = ("SELECT m.ID, m.Title, al.Album, GROUP_CONCAT(DISTINCT ar.Artist separator ', ') AS 'Artist', GROUP_CONCAT(DISTINCT g.Genre separator ', ') AS 'Genre', RIGHT(SEC_TO_TIME(m.Duration), 5) AS 'Duration', m.Size, p.Path, m.Filename, m.Spotifytrackid
+            // Order by Genre Descending Query
+            $query = ("SELECT m.ID, m.Title, al.Album, GROUP_CONCAT(DISTINCT ar.Artist separator ', ') AS 'Artist', GROUP_CONCAT(DISTINCT g.Genre separator ', ') AS 'Genre', RIGHT(SEC_TO_TIME(m.Duration), 5) AS 'Duration', m.Spotifytrackid
             FROM main as m
             JOIN artist_to_main as am ON m.ID = am.ID
             JOIN artist as ar on ar.Artist_PK = am.Artist_PK
             JOIN genre_to_main as gm ON m.ID = gm.ID
             JOIN genre as g on g.Genre_PK = gm.Genre_PK
             LEFT JOIN album as al ON m.FK_Album = al.Album_PK
-            LEFT JOIN path as p on m.FK_Path = p.Path_PK
             GROUP BY m.ID 
             ORDER BY g.Genre DESC, ar.Artist DESC");
           } 
 
           else if ($_GET['order']=="artist") {
             
-            // Order by Artist Query
-            $query = ("SELECT m.ID, m.Title, al.Album, GROUP_CONCAT(DISTINCT ar.Artist separator ', ') AS 'Artist', GROUP_CONCAT(DISTINCT g.Genre separator ', ') AS 'Genre', RIGHT(SEC_TO_TIME(m.Duration), 5) AS 'Duration', m.Size, p.Path, m.Filename, m.Spotifytrackid
+            // Order by Artist Ascending Query
+            $query = ("SELECT m.ID, m.Title, al.Album, GROUP_CONCAT(DISTINCT ar.Artist separator ', ') AS 'Artist', GROUP_CONCAT(DISTINCT g.Genre separator ', ') AS 'Genre', RIGHT(SEC_TO_TIME(m.Duration), 5) AS 'Duration', m.Spotifytrackid
             FROM main as m
             JOIN artist_to_main as am ON m.ID = am.ID
             JOIN artist as ar on ar.Artist_PK = am.Artist_PK
             JOIN genre_to_main as gm ON m.ID = gm.ID
             JOIN genre as g on g.Genre_PK = gm.Genre_PK
             LEFT JOIN album as al ON m.FK_Album = al.Album_PK
-            LEFT JOIN path as p on m.FK_Path = p.Path_PK
             GROUP BY m.ID
             ORDER BY ar.Artist ASC");
           } 
 
           else if ($_GET['order']=="artistdesc") {
             
-            // Order by Artist Query
-            $query = ("SELECT m.ID, m.Title, al.Album, GROUP_CONCAT(DISTINCT ar.Artist separator ', ') AS 'Artist', GROUP_CONCAT(DISTINCT g.Genre separator ', ') AS 'Genre', RIGHT(SEC_TO_TIME(m.Duration), 5) AS 'Duration', m.Size, p.Path, m.Filename, m.Spotifytrackid
+            // Order by Artist Descending Query
+            $query = ("SELECT m.ID, m.Title, al.Album, GROUP_CONCAT(DISTINCT ar.Artist separator ', ') AS 'Artist', GROUP_CONCAT(DISTINCT g.Genre separator ', ') AS 'Genre', RIGHT(SEC_TO_TIME(m.Duration), 5) AS 'Duration', m.Spotifytrackid
             FROM main as m
             JOIN artist_to_main as am ON m.ID = am.ID
             JOIN artist as ar on ar.Artist_PK = am.Artist_PK
             JOIN genre_to_main as gm ON m.ID = gm.ID
             JOIN genre as g on g.Genre_PK = gm.Genre_PK
             LEFT JOIN album as al ON m.FK_Album = al.Album_PK
-            LEFT JOIN path as p on m.FK_Path = p.Path_PK
             GROUP BY m.ID
             ORDER BY ar.Artist DESC, m.Title DESC");
           } 
@@ -140,106 +140,100 @@
 
           else if ($_GET['order']=="title") {
         
-            // Order by Title Query
-            $query = ("SELECT m.ID, m.Title, al.Album, GROUP_CONCAT(DISTINCT ar.Artist separator ', ') AS 'Artist', GROUP_CONCAT(DISTINCT g.Genre separator ', ') AS 'Genre', RIGHT(SEC_TO_TIME(m.Duration), 5) AS 'Duration', m.Size, p.Path, m.Filename, m.Spotifytrackid
+            // Order by Title Ascending Query
+            $query = ("SELECT m.ID, m.Title, al.Album, GROUP_CONCAT(DISTINCT ar.Artist separator ', ') AS 'Artist', GROUP_CONCAT(DISTINCT g.Genre separator ', ') AS 'Genre', RIGHT(SEC_TO_TIME(m.Duration), 5) AS 'Duration', m.Spotifytrackid
             FROM main as m
             JOIN artist_to_main as am ON m.ID = am.ID
             JOIN artist as ar on ar.Artist_PK = am.Artist_PK
             JOIN genre_to_main as gm ON m.ID = gm.ID
             JOIN genre as g on g.Genre_PK = gm.Genre_PK
             LEFT JOIN album as al ON m.FK_Album = al.Album_PK
-            LEFT JOIN path as p on m.FK_Path = p.Path_PK
             GROUP BY m.ID
             ORDER BY m.Title ASC");
           }
 
           else if ($_GET['order']=="titledesc") {
       
-            // Order by Title Desc Query
-            $query = ("SELECT m.ID, m.Title, al.Album, GROUP_CONCAT(DISTINCT ar.Artist separator ', ') AS 'Artist', GROUP_CONCAT(DISTINCT g.Genre separator ', ') AS 'Genre', RIGHT(SEC_TO_TIME(m.Duration), 5) AS 'Duration', m.Size, p.Path, m.Filename, m.Spotifytrackid
+            // Order by Title Descending Query
+            $query = ("SELECT m.ID, m.Title, al.Album, GROUP_CONCAT(DISTINCT ar.Artist separator ', ') AS 'Artist', GROUP_CONCAT(DISTINCT g.Genre separator ', ') AS 'Genre', RIGHT(SEC_TO_TIME(m.Duration), 5) AS 'Duration', m.Spotifytrackid
             FROM main as m
             JOIN artist_to_main as am ON m.ID = am.ID
             JOIN artist as ar on ar.Artist_PK = am.Artist_PK
             JOIN genre_to_main as gm ON m.ID = gm.ID
             JOIN genre as g on g.Genre_PK = gm.Genre_PK
             LEFT JOIN album as al ON m.FK_Album = al.Album_PK
-            LEFT JOIN path as p on m.FK_Path = p.Path_PK
             GROUP BY m.ID
             ORDER BY m.Title DESC, ar.Artist DESC");
           }
 
           else if ($_GET['order']=="album") {
       
-            // Order by Album Query
-            $query = ("SELECT m.ID, m.Title, al.Album, GROUP_CONCAT(DISTINCT ar.Artist separator ', ') AS 'Artist', GROUP_CONCAT(DISTINCT g.Genre separator ', ') AS 'Genre', RIGHT(SEC_TO_TIME(m.Duration), 5) AS 'Duration', m.Size, p.Path, m.Filename, m.Spotifytrackid
+            // Order by Album Ascending Query
+            $query = ("SELECT m.ID, m.Title, al.Album, GROUP_CONCAT(DISTINCT ar.Artist separator ', ') AS 'Artist', GROUP_CONCAT(DISTINCT g.Genre separator ', ') AS 'Genre', RIGHT(SEC_TO_TIME(m.Duration), 5) AS 'Duration', m.Spotifytrackid
             FROM main as m
             JOIN artist_to_main as am ON m.ID = am.ID
             JOIN artist as ar on ar.Artist_PK = am.Artist_PK
             JOIN genre_to_main as gm ON m.ID = gm.ID
             JOIN genre as g on g.Genre_PK = gm.Genre_PK
             LEFT JOIN album as al ON m.FK_Album = al.Album_PK
-            LEFT JOIN path as p on m.FK_Path = p.Path_PK
             GROUP BY m.ID
             ORDER BY al.Album ASC");
           }
 
           else if ($_GET['order']=="albumdesc") {
       
-            // Order by Album Query
-            $query = ("SELECT m.ID, m.Title, al.Album, GROUP_CONCAT(DISTINCT ar.Artist separator ', ') AS 'Artist', GROUP_CONCAT(DISTINCT g.Genre separator ', ') AS 'Genre', RIGHT(SEC_TO_TIME(m.Duration), 5) AS 'Duration', m.Size, p.Path, m.Filename, m.Spotifytrackid
+            // Order by Album Descending Query
+            $query = ("SELECT m.ID, m.Title, al.Album, GROUP_CONCAT(DISTINCT ar.Artist separator ', ') AS 'Artist', GROUP_CONCAT(DISTINCT g.Genre separator ', ') AS 'Genre', RIGHT(SEC_TO_TIME(m.Duration), 5) AS 'Duration', m.Spotifytrackid
             FROM main as m
             JOIN artist_to_main as am ON m.ID = am.ID
             JOIN artist as ar on ar.Artist_PK = am.Artist_PK
             JOIN genre_to_main as gm ON m.ID = gm.ID
             JOIN genre as g on g.Genre_PK = gm.Genre_PK
             LEFT JOIN album as al ON m.FK_Album = al.Album_PK
-            LEFT JOIN path as p on m.FK_Path = p.Path_PK
             GROUP BY m.ID
             ORDER BY al.Album DESC, m.Title DESC");
           }
 
           else if ($_GET['order']=="duration") {
       
-            // Order by Album Query
-            $query = ("SELECT m.ID, m.Title, al.Album, GROUP_CONCAT(DISTINCT ar.Artist separator ', ') AS 'Artist', GROUP_CONCAT(DISTINCT g.Genre separator ', ') AS 'Genre', RIGHT(SEC_TO_TIME(m.Duration), 5) AS 'Duration', m.Size, p.Path, m.Filename, m.Spotifytrackid
+            // Order by Duration Ascending Query
+            $query = ("SELECT m.ID, m.Title, al.Album, GROUP_CONCAT(DISTINCT ar.Artist separator ', ') AS 'Artist', GROUP_CONCAT(DISTINCT g.Genre separator ', ') AS 'Genre', RIGHT(SEC_TO_TIME(m.Duration), 5) AS 'Duration', m.Spotifytrackid
             FROM main as m
             JOIN artist_to_main as am ON m.ID = am.ID
             JOIN artist as ar on ar.Artist_PK = am.Artist_PK
             JOIN genre_to_main as gm ON m.ID = gm.ID
             JOIN genre as g on g.Genre_PK = gm.Genre_PK
             LEFT JOIN album as al ON m.FK_Album = al.Album_PK
-            LEFT JOIN path as p on m.FK_Path = p.Path_PK
             GROUP BY m.ID
             ORDER BY m.Duration ASC");
           }
 
           else if ($_GET['order']=="durationdesc") {
       
-            // Order by Album Query
-            $query = ("SELECT m.ID, m.Title, al.Album, GROUP_CONCAT(DISTINCT ar.Artist separator ', ') AS 'Artist', GROUP_CONCAT(DISTINCT g.Genre separator ', ') AS 'Genre', RIGHT(SEC_TO_TIME(m.Duration), 5) AS 'Duration', m.Size, p.Path, m.Filename, m.Spotifytrackid
+            // Order by Duration Descending Query
+            $query = ("SELECT m.ID, m.Title, al.Album, GROUP_CONCAT(DISTINCT ar.Artist separator ', ') AS 'Artist', GROUP_CONCAT(DISTINCT g.Genre separator ', ') AS 'Genre', RIGHT(SEC_TO_TIME(m.Duration), 5) AS 'Duration', m.Spotifytrackid
             FROM main as m
             JOIN artist_to_main as am ON m.ID = am.ID
             JOIN artist as ar on ar.Artist_PK = am.Artist_PK
             JOIN genre_to_main as gm ON m.ID = gm.ID
             JOIN genre as g on g.Genre_PK = gm.Genre_PK
             LEFT JOIN album as al ON m.FK_Album = al.Album_PK
-            LEFT JOIN path as p on m.FK_Path = p.Path_PK
             GROUP BY m.ID
             ORDER BY m.Duration DESC, ar.Artist DESC");
           }
         }
         else {
         // Default query
-          $query = ("SELECT m.ID, m.Title, al.Album, GROUP_CONCAT(DISTINCT ar.Artist separator ', ') AS 'Artist', GROUP_CONCAT(DISTINCT g.Genre separator ', ') AS 'Genre', RIGHT(SEC_TO_TIME(m.Duration), 5) AS 'Duration', m.Size, p.Path, m.Filename, m.Spotifytrackid
+          $query = ("SELECT m.ID, m.Title, al.Album, GROUP_CONCAT(DISTINCT ar.Artist separator ', ') AS 'Artist', GROUP_CONCAT(DISTINCT g.Genre separator ', ') AS 'Genre', RIGHT(SEC_TO_TIME(m.Duration), 5) AS 'Duration', m.Spotifytrackid
           FROM main as m
           JOIN artist_to_main as am ON m.ID = am.ID
           JOIN artist as ar on ar.Artist_PK = am.Artist_PK
           JOIN genre_to_main as gm ON m.ID = gm.ID
           JOIN genre as g on g.Genre_PK = gm.Genre_PK
           LEFT JOIN album as al ON m.FK_Album = al.Album_PK
-          LEFT JOIN path as p on m.FK_Path = p.Path_PK
           GROUP BY m.ID");
         }
+        // Sets Default Spotify song to Blueberry Faygo, which is first song on the database
         $trackid = '6wJYhPfqk3KGhHRG76WzOh';
 
         $result = mysqli_query($con,$query);
@@ -252,16 +246,20 @@
           <th>
             <?php 
             if (isset($_GET['order'])) { 
+              // Changes title to order by descending when clicked
               if ($_GET['order']=="title") { 
                 echo "<a href = 'music.php?order=titledesc'>Title ▼</a>"; 
               } 
+              // Changes title to order by ascending when clicked
               else if ($_GET['order']=="titledesc"){ 
                 echo "<a href = 'music.php?order=title'>Title ▲</a>"; 
               } 
+              // Changes title to order by ascending when clicked
               else {
                 echo "<a href = 'music.php?order=title'>Title</a>";
                 } 
-              } 
+              }
+              // Changes title to order by ascending when clicked 
             else { 
               echo "<a href = 'music.php?order=title'>Title</a>"; 
             } ?>
@@ -269,16 +267,20 @@
           <th>
             <?php 
             if (isset($_GET['order'])) { 
+              // Changes album to order by descending when clicked
               if ($_GET['order']=="album") { 
                 echo "<a href = 'music.php?order=albumdesc'>Album ▼</a>"; 
               } 
+              // Changes album to order by ascending when clicked
               else if ($_GET['order']=="albumdesc"){ 
                 echo "<a href = 'music.php?order=album'>Album ▲</a>"; 
               } 
+              // Changes album to order by ascending when clicked
               else {
                 echo "<a href = 'music.php?order=album'>Album</a>";
                 } 
               } 
+            // Changes album to order by ascending when clicked
             else { 
               echo "<a href = 'music.php?order=album'>Album</a>"; 
             } ?>
@@ -286,16 +288,20 @@
           <th>
             <?php 
             if (isset($_GET['order'])) { 
+              // Changes artist to order by descending when clicked
               if ($_GET['order']=="artist") { 
                 echo "<a href = 'music.php?order=artistdesc'>Artist ▼</a>"; 
               } 
+              // Changes artist to order by ascending when clicked
               else if ($_GET['order']=="artistdesc"){ 
                 echo "<a href = 'music.php?order=artist'>Artist ▲</a>"; 
               } 
+              // Changes artist to order by ascending when clicked
               else {
                 echo "<a href = 'music.php?order=artist'>Artist</a>";
                 } 
               } 
+            // Changes artist to order by ascending when clicked
             else { 
               echo "<a href = 'music.php?order=artist'>Artist</a>"; 
             } ?>
@@ -303,16 +309,20 @@
           <th>
           <?php
             if (isset($_GET['order'])) {
+              // Changes genre to order by descending when clicked
               if ($_GET['order']=="genre") { 
                 echo "<a href = 'music.php?order=genredesc'><h4>Genre ▼</a>"; 
               } 
+              // Changes genre to order by ascending when clicked
               else if ($_GET['order']=="genredesc"){ 
                 echo "<a href = 'music.php?order=genre'><h4>Genre ▲</a>"; 
-              } 
+              }
+              // Changes genre to order by ascending when clicked 
               else { 
                 echo "<a href = 'music.php?order=genre'><h4>Genre</a>"; 
               } 
             } 
+            // Changes genre to order by ascending when clicked
             else { 
               echo "<a href = 'music.php?order=genre'><h4>Genre</a>"; 
             } 
@@ -321,16 +331,20 @@
           <th>
             <?php
             if (isset($_GET['order'])) { 
+              // Changes duration to order by descending when clicked
               if ($_GET['order']=="duration") { 
                 echo "<a href = 'music.php?order=durationdesc'>Duration ▼</a>"; 
               } 
+              // Changes duration to order by ascending when clicked
               else if ($_GET['order']=="durationdesc"){ 
                 echo "<a href = 'music.php?order=duration'>Duration ▲</a>"; 
               } 
+              // Changes duration to order by ascending when clicked
               else {
                 echo "<a href = 'music.php?order=duration'>Duration</a>";
                 } 
               } 
+            // Changes duration to order by ascending when clicked
             else { 
               echo "<a href = 'music.php?order=duration'>Duration</a>"; 
             } ?>

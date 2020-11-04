@@ -8,6 +8,7 @@
         <a href="index.php">Home</a>
       </li>
       <?php 
+        // Only displays this when the user is logged in
         if (isset($_SESSION['userId'])) {
           echo '<li>
                   <a href="music.php">Music</a>
@@ -17,8 +18,9 @@
       </ul>
       <ul class="right-side-nav">
         <li>
+        <!-- Script that enables the dark/light theme toggler --> 
         <script type="text/javascript">
-
+          // Index page doesn't have dark/light theme, as it looks best the way I have it
           if (window.location.href.indexOf("index") > -1) {
             
           }
@@ -42,6 +44,7 @@
         </li>
         <li>
           <?php
+            // If there is a user Logged in
             if (isset($_SESSION['userId'])) {
               ?>
               <div class=dropdown>
@@ -49,6 +52,7 @@
                 <?php echo ucfirst(strtolower($_SESSION["userUid"])); ?> &#9660;
               </button>
               <div id="myDropdown" class="dropdown-content">
+                <!-- Checks if user is admin/Graeme to display the link to the account page -->
                 <?php if ($_SESSION['userUid'] == "Graeme") { ?>
                 <b><a style="color: #989898; font-family: inherit;font-size: 17px;" href="account.php">Account</a></b>
                 <hr>
@@ -62,6 +66,7 @@
             </button>
             <?php
             }
+            // If there is no user logged in it shows the login and signup buttons 
             else {
               echo '<li>
               <!-- Button to Open the Modal -->
@@ -82,7 +87,7 @@
     </ul>
   </div>  
 </header>
-      <!-- The Modal -->
+      <!-- Login Modal -->
       <div class="modal fade" id="signIn">
         <div class="modal-dialog">
           <div class="modal-content">
@@ -97,7 +102,7 @@
               <button type="button" class="close" data-dismiss="modal">&times;</button>
               <form action="includes/login.inc.php" method="post">
 
-                <!-- Email Field -->
+                <!-- Email/Username Field -->
 
                 <div class="row">
                     <input type="text" id="mailuid" name="mailuid" placeholder="Username or Email address" required>
@@ -106,6 +111,7 @@
                 <br>
 
                 <?php
+                  // Error for when the user inputs an invalid Username or Email Address
                   if (isset($_GET['error'])) {
                     if ($_GET['error'] == "nouser") {
                       echo "<script type='text/javascript'>
@@ -137,6 +143,7 @@
                 <br> 
                 
                 <?php
+                  // Error for when the user inputs the wrong Password
                   if (isset($_GET['error'])) {
                     if ($_GET['error'] == "wrongpwd") {
                       echo "<script type='text/javascript'>
@@ -154,7 +161,7 @@
                         }
                       </style>";
 
-                      echo "<p class='signup-error'>Incorrect password. Please try again. <!--<br> If you forgot your password click here--></p>";
+                      echo "<p class='signup-error'>Incorrect password. Please try again.</p>";
                     }
                   }
                 ?>
@@ -177,7 +184,7 @@
         </div>
       </div>
       
-      <!-- The Modal -->
+      <!-- Register Modal -->
       <div class="modal fade" id="register">
         <div class="modal-dialog">
           <div class="modal-content">
@@ -202,6 +209,7 @@
                 <br>
 
                 <?php
+                // Error for when the user inputs an invalid username
                 if (isset($_GET['error'])) {
                   if ($_GET['error'] == "invaliduid") {
                     echo "<script type='text/javascript'>
@@ -221,6 +229,7 @@
 
                     echo '<p class="signup-error">Please enter a valid username.</p>';
                   }
+                  // Error for when the user inputs an invalid username
                   else if ($_GET['error'] == "invalidmailuid") {
                     echo "<script type='text/javascript'>
                     $(document).ready(function(){
@@ -239,6 +248,7 @@
 
                     echo '<p class="signup-error">Please enter a valid username.</p>';
                   }
+                  // Error for when the user inputs a Username which is already taken
                   else if ($_GET['error'] == "usertaken") {
                     echo "<script type='text/javascript'>
                     $(document).ready(function(){
@@ -269,6 +279,7 @@
                 <br>
 
                 <?php
+                // Error for when the user inputs an invalid email address
                 if (isset($_GET['error'])) {
                   if ($_GET['error'] == "invalidmail") {
                     echo "<script type='text/javascript'>
@@ -288,6 +299,7 @@
 
                     echo '<p class="signup-error">Please enter a valid email address.</p>';
                   }
+                  // Error for when the user inputs an email address which is invalid
                   else if ($_GET['error'] == "invalidmailuid") {
                     echo "<script type='text/javascript'>
                     $(document).ready(function(){
@@ -318,6 +330,7 @@
                 <br>
 
                 <?php
+                  // Error for when the user inputs two passwords which don't match
                   if (isset($_GET['error'])) {
                     if ($_GET['error'] == "passwordcheck") {
                       echo "<script type='text/javascript'>
@@ -347,6 +360,7 @@
                 <br>
 
                 <?php
+                  // Error for when the user inputs two passwords which don't match
                   if (isset($_GET['error'])) {
                     if ($_GET['error'] == "passwordcheck") {
                       echo "<script type='text/javascript'>
